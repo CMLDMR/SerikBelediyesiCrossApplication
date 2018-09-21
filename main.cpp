@@ -5,6 +5,7 @@
 #else
 #endif
 
+#include <QIcon>
 
 #include "qmlmongodb.h"
 
@@ -13,6 +14,8 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
+
+    app.setWindowIcon(QIcon(":/img/img/3D_Logox48.png"));
 
     QFile file("../DBoptions");
 
