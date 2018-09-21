@@ -140,7 +140,7 @@ Item {
             target: sliderPageContentRectid
             property: "width"
             from: 0
-            to: parent.width > 1024 ? 1024 : parent.width
+            to: parent.width > 600 ? 600 : parent.width
             duration: 250
             onStopped: {
                 loadSlide(sliderDetailPage.oid);
@@ -151,7 +151,7 @@ Item {
             id: sliderPageContentRectCloseid
             target: sliderPageContentRectid
             property: "width"
-            from: parent.width
+            from: parent.width > 600 ? 600 : parent.width
             to: 0
             duration: 250
             onStopped: {
@@ -173,7 +173,9 @@ Item {
 
         var e = db.find_one("Slider",filter,option);
 
-        haberdetailid.text = e.getElement("html").String;
+        var html = utility.RepairHTML(e.getElement("html").String);
+
+        haberdetailid.text = html;
         haberTitleid.text = e.getElement("title").String;
 
         slideDetailimg.source = db.fileurl(e.getElement("sliderImg").Oid);

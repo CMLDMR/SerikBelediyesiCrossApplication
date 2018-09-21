@@ -8,6 +8,7 @@
 #include <QIcon>
 
 #include "qmlmongodb.h"
+#include "utility.h"
 
 int main(int argc, char *argv[])
 {
@@ -16,6 +17,9 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     app.setWindowIcon(QIcon(":/img/img/3D_Logox48.png"));
+
+    qmlRegisterType<Utility>("Utility", 0, 7, "Utility");
+
 
     QFile file("../DBoptions");
 

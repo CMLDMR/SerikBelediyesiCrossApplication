@@ -59,7 +59,7 @@ Item {
                             width: scrollid.width
                             Text {
                                 id: baskantext
-                                text: qsTr("text")
+                                text: qsTr("Yükleniyor")
                                 textFormat: Text.RichText
                                 wrapMode: Text.WordWrap
                                 width: baskanPageDetailitem.width
@@ -119,18 +119,21 @@ Item {
 
                 var baskan = db.find_one("Yonetim",filter,option)
 
-                var filelist = baskan.getElement("filelist");
+                var filelist = baskan.getElement("fileList");
 
                 var array = filelist.Array;
 
-                for( var i = 0 ; i < array.Count ; i++ )
+                print( "COunt Array: " + array.count );
+                for( var i = 0 ; i < array.count ; i++ )
                 {
                     var e = array.getElement(i);
-                    db.fileurl(e.Oid,true);
+                    print( db.fileurl(e.Oid,true) );
                 }
 
+                var html = utility.RepairHTML( baskan.getElement("html").String );
 
-                baskantext.text = baskan.getElement("html").String
+
+                baskantext.text = html;
             }
         }
     }

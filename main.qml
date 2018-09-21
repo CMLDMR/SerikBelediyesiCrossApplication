@@ -2,6 +2,7 @@ import QtQuick 2.11
 import QtQuick.Window 2.11
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
+import Utility 0.7
 
 import com.mongodb 0.7
 
@@ -16,6 +17,10 @@ Window {
 
     MongoDB{
         id: db
+    }
+
+    Utility{
+        id: utility
     }
 
     // Main Rectangle All İtems is İnside

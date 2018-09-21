@@ -23,7 +23,7 @@ Item {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    view.currentIndex = 0
+//                    view.currentIndex = 0
                 }
             }
             z: 10

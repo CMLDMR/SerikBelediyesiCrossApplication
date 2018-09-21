@@ -204,7 +204,7 @@ Item{
                                     timeelapsedslideitemanimationid.duration = sliderTimer.interval
                                     timeelapsedslideitemanimationid.running = true
 
-                                    print( "Ramdom Slide İndex: " + randomindex +" - " + sliderTimer.interval );
+//                                    print( "Ramdom Slide İndex: " + randomindex +" - " + sliderTimer.interval );
                                 }
                                 Component.onCompleted: {
                                     sliderTimer.running = true;
@@ -263,7 +263,32 @@ Item{
                                 }
                             }
 
+                            // Load Slide Title Page
+                            MouseArea{
+                                anchors.fill: parent
+                                onClicked: {
+                                    var component = Qt.createComponent("qrc:/Baskan/BaskanPage.qml");
+                                    if( component.status === Component.Ready )
+                                    {
+                                        var sprite = component.createObject( mainslidetitemid );
+                                        if (sprite === null) {
+                                            // Error Handling
+                                            console.log("Error creating object");
+                                        }else{
+                                            console.log("Success init");
+                                        }
+                                    }else{
+                                        print( "BaskanPage.qml Component Not Ready");
+                                    }
+
+                                }
+                            }
+
                         }
+
+
+
+
 
                         //Video Cover
                         Rectangle{
