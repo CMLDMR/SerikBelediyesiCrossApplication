@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Haberler/SliderPage.qml</file>
+    </qresource>
+    <qresource prefix="/Header">
+        <file>Header/3D Logo.png</file>
+        <file>Header/10392405.png</file>
+        <file>Header/logo.jpg</file>
+        <file>Header.qml</file>
+    </qresource>
+    <qresource prefix="/Main">
+        <file>MainRect.qml</file>
+    </qresource>
+    <qresource prefix="/img">
+        <file>img/videoWidgetPlay.png</file>
+    </qresource>
+    <qresource prefix="/Haberler">
+        <file>HaberMainRect.qml</file>
+    </qresource>
+</RCC>
