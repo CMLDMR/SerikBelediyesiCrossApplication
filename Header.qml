@@ -61,8 +61,6 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 color: "white"
-//                anchors.left: logoheadermenu.anchors.right
-//                anchors.leftMargin: 75
             }
             Text {
                 id: applicationtitleEn
@@ -105,21 +103,51 @@ Item {
                 id: menuresponsiverowid
                 color: "transparent"
                 height: parent.height
-                width: 125
+                width: 60
                 anchors.right: parent.right
-                Text {
-                    id: menuresponsiveitemid
-                    text: qsTr("Menü")
-                    color: "white"
-                    font.bold: true
-                    verticalAlignment: Text.AlignVCenter
-                    horizontalAlignment: Text.AlignHCenter
-                    font.pointSize: 10
-                    font.family: "Tahoma"
-                    anchors.centerIn: parent
+
+                Image {
+                    id: menuresposiveiconid
+                    property bool rotated: false
+                    source: "qrc:/img/img/menu-512.png"
+                    fillMode: Image.PreserveAspectFit
+                    anchors.fill: parent
+//                    height: parent.height
+//                    width: parent.height
+                    smooth: true
+                    clip: true
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            if( menuresposiveiconid.rotation == 0 )
+                            {
+                                responsivemenurotate.running = true;
+                            }else{
+                                responsivemenurotateback.running = true;
+                            }
+
+
+                        }
+                    }
                 }
-                border.color: "white"
-                border.width: 1
+
+
+                PropertyAnimation{
+                    id: responsivemenurotate
+                    target: menuresposiveiconid
+                    property: "rotation"
+                    from: 0
+                    to: -90
+                    duration: 250
+                }
+                PropertyAnimation{
+                    id: responsivemenurotateback
+                    target: menuresposiveiconid
+                    property: "rotation"
+                    from: -90
+                    to: 0
+                    duration: 250
+                }
             }
 
 
