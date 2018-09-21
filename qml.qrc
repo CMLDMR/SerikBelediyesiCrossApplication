@@ -15,6 +15,7 @@
     <qresource prefix="/img">
         <file>img/videoWidgetPlay.png</file>
         <file>img/menu-512.png</file>
+        <file>img/3D_Logox48.png</file>
     </qresource>
     <qresource prefix="/Haberler">
         <file>HaberMainRect.qml</file>

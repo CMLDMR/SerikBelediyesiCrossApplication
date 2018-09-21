@@ -113,13 +113,10 @@ Item{
                                                 MouseArea{
                                                     anchors.fill: parent
                                                     onClicked: {
-                                                        print("Slider Clicked: " + slideritem.oid);
                                                         var component = Qt.createComponent("qrc:/Haberler/SliderPage.qml");
                                                         if( component.status === Component.Ready )
                                                         {
-
                                                             var sprite = component.createObject( mainslidetitemid , {"oid":slideritem.oid});
-
                                                             if (sprite === null) {
                                                                 // Error Handling
                                                                 console.log("Error creating object");

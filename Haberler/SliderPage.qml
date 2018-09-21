@@ -65,6 +65,7 @@ Item {
                                     id: haberTitleid
                                     width: sliderPageContentRectid.width
                                     color: "#ffffff"
+                                    text: "Yükleniyor... Lütfen Bekleyiniz"
                                     font.bold: true
                                     verticalAlignment: Text.AlignVCenter
                                     horizontalAlignment: Text.AlignHCenter
@@ -84,7 +85,7 @@ Item {
                         width: sliderPageContentRectid.width
                         Text {
                             id: haberdetailid
-                            text: qsTr("text")
+                            text: qsTr("Yükleniyor")
                             textFormat: Text.RichText
                             width: sliderPageContentRectid.width
                             wrapMode: Text.WordWrap
@@ -108,6 +109,7 @@ Item {
                             color: "#fdf8f8"
                             wrapMode: Text.WordWrap
                             anchors.margins: 10
+                            anchors.centerIn: parent
                         }
                         color: "#10658f"
                         MouseArea{
