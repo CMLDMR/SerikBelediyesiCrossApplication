@@ -12,7 +12,7 @@ Window {
     visible: true
     width: 360
     height: 640
-    title: qsTr("Hello World")
+    title: qsTr("Serik Belediyesi Resmi Uygulaması - 2018")
 
     MongoDB{
         id: db
