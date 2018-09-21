@@ -60,6 +60,9 @@ Item{
                                             height: sliderSwipeViewid.height
                                             border.color: "black"
                                             border.width: 1
+
+
+
                                             Image {
                                                 source: db.fileurl(modelData.getElement("sliderImg").Oid);
                                                 anchors.fill: parent
@@ -136,6 +139,7 @@ Item{
 
                                             }
 
+
                                         }
                                         Component.onCompleted: {
                                             var filter = QBSON.newBSON();
@@ -150,7 +154,41 @@ Item{
                                     }
                                 }
 
+                                Rectangle{
+                                    id: timeelapsedslideitemid
+                                    width: 0
+                                    height: 3
+                                    anchors.bottom: parent.bottom
+                                    x: 0
+                                    color: "white"
+                                }
+
+
+                                DropShadow {
+                                    anchors.fill: baskantext
+                                    horizontalOffset: 0
+                                    verticalOffset: -5
+                                    radius: 7.0
+                                    samples: 17
+                                    color: "white"
+                                    source: baskantext
+                                    z: 2
+                                }
+
                             }
+
+                            PropertyAnimation{
+                                id: timeelapsedslideitemanimationid
+                                target: timeelapsedslideitemid
+                                property: "width"
+                                from: 0
+                                to: sliderSwipeViewid.width
+                                onStopped: {
+//                                    timeelapsedslideitemid.width = 0;
+                                }
+                            }
+
+
 
 
                             Timer{
@@ -165,6 +203,10 @@ Item{
                                     sliderSwipeViewid.currentIndex = randomindex;
 
                                     sliderTimer.interval = (randomindex%5+5)*1000;
+
+                                    timeelapsedslideitemanimationid.duration = sliderTimer.interval
+                                    timeelapsedslideitemanimationid.running = true
+
                                     print( "Ramdom Slide İndex: " + randomindex +" - " + sliderTimer.interval );
                                 }
                                 Component.onCompleted: {
