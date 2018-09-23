@@ -130,7 +130,7 @@ Item {
                     print( db.fileurl(e.Oid,true) );
                 }
 
-                var html = utility.RepairHTML( baskan.getElement("html").String );
+                var html = utility.RepairHTML( baskan.getElement("html").String , baskanpagerect.width );
 
 
                 baskantext.text = html;

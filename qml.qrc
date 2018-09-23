@@ -19,8 +19,12 @@
     </qresource>
     <qresource prefix="/Haberler">
         <file>HaberMainRect.qml</file>
+        <file>HaberDetailPage.qml</file>
     </qresource>
     <qresource prefix="/Baskan">
         <file>BaskanPage.qml</file>
+    </qresource>
+    <qresource prefix="/Galeri">
+        <file>VideoPlayer.qml</file>
     </qresource>
 </RCC>

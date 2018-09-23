@@ -10,7 +10,7 @@ class Utility : public QObject
 public:
     explicit Utility(QObject *parent = nullptr);
 
-    Q_INVOKABLE QString RepairHTML( QString html );
+    Q_INVOKABLE QString RepairHTML( QString html , int width );
 
 signals:
 

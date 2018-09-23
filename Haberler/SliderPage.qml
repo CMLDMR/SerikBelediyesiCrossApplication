@@ -173,7 +173,9 @@ Item {
 
         var e = db.find_one("Slider",filter,option);
 
-        var html = utility.RepairHTML(e.getElement("html").String);
+        var w = parent.width > 600 ? 600 : parent.width;
+
+        var html = utility.RepairHTML(e.getElement("html").String,w);
 
         haberdetailid.text = html;
         haberTitleid.text = e.getElement("title").String;

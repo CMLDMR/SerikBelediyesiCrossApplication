@@ -352,6 +352,27 @@ Item{
                                     print( obj.getElement("VideoLabel").Oid + " " + videoCoverid.source );
                                 }
                             }
+
+                            // Load VideoPlayer Page
+                            MouseArea{
+                                anchors.fill: parent
+                                onClicked: {
+                                    var component = Qt.createComponent("qrc:/Galeri/VideoPlayer.qml");
+                                    if( component.status === Component.Ready )
+                                    {
+                                        var sprite = component.createObject( mainslidetitemid );
+                                        if (sprite === null) {
+                                            // Error Handling
+                                            console.log("Error creating object");
+                                        }else{
+                                            console.log("Success Video init");
+                                        }
+                                    }else{
+                                        print( "VideoPlayer.qml Component Not Ready");
+                                    }
+
+                                }
+                            }
                         }
 
                         //Haberler
@@ -370,10 +391,11 @@ Item{
                                 Repeater{
                                     id: haberlistid
                                     Rectangle{
+                                        id: haberitemid
                                         width: obj5.width
                                         color: "gray"
                                         height: 65
-
+                                        property string oid: modelData.getElement("_id").Oid
                                         Rectangle{
                                             id: haberlisticonrectid
                                             color: "orange"
@@ -395,6 +417,29 @@ Item{
                                             height: parent.height
                                             verticalAlignment: Text.AlignVCenter
                                             horizontalAlignment: Text.AlignHCenter
+                                        }
+
+                                        // Load Slide Title Page
+                                        MouseArea{
+                                            anchors.fill: parent
+                                            onClicked: {
+                                                var component = Qt.createComponent("qrc:/Haberler/HaberDetailPage.qml");
+                                                if( component.status === Component.Ready )
+                                                {
+                                                    var sprite = component.createObject( mainslidetitemid , {"oid":haberitemid.oid});
+                                                    if (sprite === null) {
+                                                        // Error Handling
+                                                        console.log("Error creating object");
+                                                    }else{
+                                                        console.log("Success init");
+//                                                                sprite.width = mainslidetitemid.width;
+//                                                                sprite.height = mainslidetitemid.height
+                                                    }
+                                                }else{
+                                                    print( "HaberDetailPage.qml Component Not Ready");
+                                                }
+
+                                            }
                                         }
                                     }
                                 }
