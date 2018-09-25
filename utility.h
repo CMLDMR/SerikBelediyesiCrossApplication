@@ -3,6 +3,8 @@
 
 #include <QtCore/QObject>
 #include <QtCore/qglobal.h>
+#include <QDate>
+
 
 class Utility : public QObject
 {
@@ -11,6 +13,8 @@ public:
     explicit Utility(QObject *parent = nullptr);
 
     Q_INVOKABLE QString RepairHTML( QString html , int width );
+
+    Q_INVOKABLE double currentDateDouble();
 
 signals:
 

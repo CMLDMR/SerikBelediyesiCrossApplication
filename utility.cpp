@@ -25,3 +25,8 @@ QString Utility::RepairHTML(QString html, int width)
     return html;
 }
 
+double Utility::currentDateDouble()
+{
+    return QDate::currentDate().toString("yyyyMMdd").toDouble();
+}
+
