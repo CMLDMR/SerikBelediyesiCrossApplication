@@ -599,7 +599,7 @@ Item{
                         }
 
 
-
+                        // ÇALIŞMALAR
                         Rectangle{
                             color: "#ffffff"
                             width: parent.width
@@ -791,6 +791,25 @@ Item{
                                                     color: "#80000000"
                                                     source: projectContentTitleid
                                                     z: 2
+                                                }
+                                            }
+                                            MouseArea{
+                                                anchors.fill: parent
+                                                onClicked: {
+                                                    var component = Qt.createComponent("qrc:/Main/ProjeDetailPage.qml");
+                                                    if( component.status === Component.Ready )
+                                                    {
+                                                        var oid = modelData.getElement("_id").Oid;
+                                                        var sprite = component.createObject( mainslidetitemid , {"oid":oid});
+                                                        if (sprite === null) {
+                                                            // Error Handling
+                                                            console.log("Error creating object");
+                                                        }else{
+                                                            console.log("Success init");
+                                                        }
+                                                    }else{
+                                                        print( "HaberDetailPage.qml Component Not Ready");
+                                                    }
                                                 }
                                             }
                                         }

@@ -12,6 +12,7 @@
     <qresource prefix="/Main">
         <file>MainRect.qml</file>
         <file>DuyuruItemPage.qml</file>
+        <file>ProjeDetailPage.qml</file>
     </qresource>
     <qresource prefix="/img">
         <file>img/videoWidgetPlay.png</file>
