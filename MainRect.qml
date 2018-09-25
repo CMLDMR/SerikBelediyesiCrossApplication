@@ -38,6 +38,7 @@ Item{
 
 
 
+                        /// Slider
                         Rectangle{
                             color: "transparent"
                             width: parent.width
@@ -222,6 +223,7 @@ Item{
                             }
                         }
 
+                        // BaskanPage
                         Rectangle{
                             color: "transparent"
                             width: parent.width
@@ -485,6 +487,7 @@ Item{
 
 
 
+                        // Duyurular
                         Rectangle{
                             color: "white"
                             width: parent.width
@@ -514,9 +517,12 @@ Item{
                                 Repeater{
                                     id: duyurulistid
                                     Rectangle{
+                                        id: duyurulistitemrectid
                                         width: obj6.width
                                         color: "RosyBrown"
                                         height: 65
+
+                                        property string oid: modelData.getElement("_id").Oid
 
                                         Text{
                                             text: modelData.getElement("Başlık").String
@@ -537,20 +543,53 @@ Item{
                                                 }
                                             }
                                         }
+                                        MouseArea{
+                                            anchors.fill: parent
+                                            onClicked: {
+                                                var component = Qt.createComponent("qrc:/Main/DuyuruItemPage.qml");
+                                                if( component.status === Component.Ready )
+                                                {
+                                                    var sprite = component.createObject( mainslidetitemid , {"oid":duyurulistitemrectid.oid});
+                                                    if (sprite === null) {
+                                                        // Error Handling
+                                                        console.log("Error creating object");
+                                                    }else{
+                                                        console.log("Success init");
+//                                                                sprite.width = mainslidetitemid.width;
+//                                                                sprite.height = mainslidetitemid.height
+                                                    }
+                                                }else{
+                                                    print( "HaberDetailPage.qml Component Not Ready");
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
                             Component.onCompleted: {
                                 var filter = QBSON.newBSON();
                                 filter.addString("Yayında","Yayında");
+
+                                var lteFilter = QBSON.newBSON();
+                                lteFilter.addDouble("$gte",utility.currentDateDouble());
+                                filter.addBson("Bitiş Tarihi",lteFilter);
+
+
+
+                                print( "Date: " + utility.currentDateDouble() );
+
+
                                 var option = QBSON.newBSON();
-                                option.addInt("limit",2);
+//                                option.addInt("limit",2);
                                 var projection = QBSON.newBSON();
                                 projection.addBool("Başlık",true);
                                 option.addBson("projection",projection);
                                 var sort = QBSON.newBSON();
                                 sort.addInt("_id",-1);
                                 option.addBson("sort",sort);
+
+
+
                                 duyurulistid.model = db.find( "Duyurular" , filter , option );
 
                                 obj6.height = 70 * duyurulistid.model.length + 50;
@@ -827,16 +866,16 @@ Item{
                                     }
                                 }
 
-                                Rectangle{
-                                    width: parent.width
-                                    height: 20
-                                    color: "transparent"
-                                    Text {
-                                        text: qsTr("Kurum içi Portal")
-                                        color: "steelblue"
-                                        anchors.centerIn: parent
-                                    }
-                                }
+//                                Rectangle{
+//                                    width: parent.width
+//                                    height: 20
+//                                    color: "transparent"
+//                                    Text {
+//                                        text: qsTr("Kurum içi Portal")
+//                                        color: "steelblue"
+//                                        anchors.centerIn: parent
+//                                    }
+//                                }
                             }
                         }
 

@@ -11,11 +11,13 @@
     </qresource>
     <qresource prefix="/Main">
         <file>MainRect.qml</file>
+        <file>DuyuruItemPage.qml</file>
     </qresource>
     <qresource prefix="/img">
         <file>img/videoWidgetPlay.png</file>
         <file>img/menu-512.png</file>
         <file>img/3D_Logox48.png</file>
+        <file>img/duyuru1.JPG</file>
     </qresource>
     <qresource prefix="/Haberler">
         <file>HaberMainRect.qml</file>

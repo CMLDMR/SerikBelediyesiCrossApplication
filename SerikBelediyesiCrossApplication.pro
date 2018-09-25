@@ -83,5 +83,8 @@ DISTFILES += \
 HEADERS += \
     utility.h
 
+DISTFILES += \
+    img/duyuru1.JPG
+
 
 
