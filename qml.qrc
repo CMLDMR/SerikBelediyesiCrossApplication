@@ -8,6 +8,7 @@
         <file>Header/10392405.png</file>
         <file>Header/logo.jpg</file>
         <file>Header.qml</file>
+        <file>ResponsiveMenu.qml</file>
     </qresource>
     <qresource prefix="/Main">
         <file>MainRect.qml</file>

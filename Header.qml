@@ -23,21 +23,39 @@ Item {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-//                    view.currentIndex = 0
+                    if( menuresposiveiconid.rotation == 0 )
+                    {
+                        responsivemenu.openup();
+                        responsivemenurotate.running = true;
+                    }else{
+                        responsivemenu.closeup();
+                        responsivemenurotateback.running = true;
+                    }
+                }
+                onPressed: {
+                    print( "Pressed");
+                    logoshadow.color = "white";
+
+                }
+
+                onReleased: {
+                    print( "Released");
+                    logoshadow.color = "#80000000";
                 }
             }
             z: 10
         }
 
         DropShadow {
+            id: logoshadow
             anchors.fill: logoheadermenu
             horizontalOffset: 0
-            verticalOffset: 3
-            radius: 8.0
-            samples: 17
+            verticalOffset: 2
+            radius: 16.0
+            samples: 32
             color: "#80000000"
             source: logoheadermenu
-            z: 2
+            z: 10
         }
 
 
@@ -45,7 +63,7 @@ Item {
         Rectangle{
             width: parent.width - logoheadermenu.width
             x: logoheadermenu.width
-//            x: 0
+            //            x: 0
             height: 20
             color: "black"
             y: 0
@@ -81,7 +99,7 @@ Item {
             id: headerLineWidth
             width: parent.width
             x: logoheadermenu.width
-//            x: 0
+            //            x: 0
             height: 1
             color: "white"
             y: 20
@@ -112,8 +130,6 @@ Item {
                     source: "qrc:/img/img/menu-512.png"
                     fillMode: Image.PreserveAspectFit
                     anchors.fill: parent
-//                    height: parent.height
-//                    width: parent.height
                     smooth: true
                     clip: true
                     MouseArea{
@@ -121,15 +137,17 @@ Item {
                         onClicked: {
                             if( menuresposiveiconid.rotation == 0 )
                             {
+                                responsivemenu.openup();
                                 responsivemenurotate.running = true;
                             }else{
+                                responsivemenu.closeup();
                                 responsivemenurotateback.running = true;
                             }
-
-
                         }
                     }
                 }
+
+
 
 
                 PropertyAnimation{
@@ -149,6 +167,11 @@ Item {
                     duration: 250
                 }
             }
+
+
+
+
+
 
 
 
@@ -326,6 +349,23 @@ Item {
         }
 
 
+        ResponsiveMenu{
+            id: responsivemenu
+            width: parent.width/2
+            height: 350
+            anchors.centerIn: parent
+            onTriggered: {
+                if( menuresposiveiconid.rotation == 0 )
+                {
+                    responsivemenu.openup();
+                    responsivemenurotate.running = true;
+                }else{
+                    responsivemenu.closeup();
+                    responsivemenurotateback.running = true;
+                }
+            }
+        }
+
         onWidthChanged: {
             if( headerRect.width > 1024 )
             {
@@ -334,8 +374,7 @@ Item {
                 logoheadermenu.width = 150
                 logoheadermenu.height = 150
                 subgrayid.height = 60;
-//                logoheadermenu.anchors.topMargin = 150
-//                logoheadermenu.anchors.leftMargin = 375
+                responsivemenu.closeup();
             }else{
                 menurowid.visible = false
                 menuresponsiverowid.visible = true
@@ -359,22 +398,7 @@ Item {
 
     }
 
-//    DropShadow {
-//        anchors.fill: headerRect
-//        horizontalOffset: 0
-//        verticalOffset: 3
-//        radius: 8.0
-//        samples: 17
-//        color: "#80000000"
-//        source: headerRect
-//        z: 2
-//    }
-
-
-
-
-
-    }
+}
 
 
 
