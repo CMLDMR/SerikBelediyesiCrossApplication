@@ -4,6 +4,7 @@
 #include <QtCore/QObject>
 #include <QtCore/qglobal.h>
 #include <QDate>
+#include <QTime>
 
 
 class Utility : public QObject
@@ -15,6 +16,12 @@ public:
     Q_INVOKABLE QString RepairHTML( QString html , int width );
 
     Q_INVOKABLE double currentDateDouble();
+
+    Q_INVOKABLE qint64 currentJulianDay() const;
+
+    Q_INVOKABLE QString currentSaat() const;
+
+    Q_INVOKABLE QString currentStringDay() const;
 
 signals:
 

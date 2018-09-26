@@ -30,3 +30,18 @@ double Utility::currentDateDouble()
     return QDate::currentDate().toString("yyyyMMdd").toDouble();
 }
 
+QString Utility::currentSaat() const
+{
+    return QTime::currentTime().toString("hh:mm");
+}
+
+QString Utility::currentStringDay() const
+{
+    return QDate::currentDate().toString("dddd dd/MM/yyyy");
+}
+
+qint64 Utility::currentJulianDay() const
+{
+    return QDate::currentDate().toJulianDay();
+}
+
