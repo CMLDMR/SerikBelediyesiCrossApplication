@@ -60,6 +60,7 @@ Item {
                         onClicked: {
                             responsiveitemid.triggered();
                             closeup();
+                            loadCekGonder();
                         }
 
                         onPressed: {
@@ -69,6 +70,7 @@ Item {
                         onReleased: {
                             cekgonderbuttonid.color = "transparent";
                             cekgondertextid.color = "white";
+
                         }
                     }
                 }
@@ -127,14 +129,6 @@ Item {
         property: "y"
         to: 150
         duration: 250
-        onStopped: {
-            print( "onOpen");
-            print( "Y: " + responsivemenurect.y );
-            print( "X: " + responsivemenurect.x );
-
-            print( "W: " + responsivemenurect.width );
-            print( "H: " + responsivemenurect.height );
-        }
     }
 
     PropertyAnimation{
@@ -143,14 +137,6 @@ Item {
         property: "y"
         to: -350
         duration: 250
-        onStopped: {
-            print( "onClose");
-            print( "Y: " + responsivemenurect.y );
-            print( "X: " + responsivemenurect.x );
-
-            print( "W: " + responsivemenurect.width );
-            print( "H: " + responsivemenurect.height );
-        }
     }
 
 
@@ -160,6 +146,24 @@ Item {
 
     function closeup(){
         responsivemenurectclose.running = true;
+    }
+
+
+
+    function loadCekGonder(){
+        var component = Qt.createComponent("qrc:/Main/CekGonder.qml");
+        if( component.status === Component.Ready )
+        {
+            var sprite = component.createObject( mainRectid );
+            if (sprite === null) {
+                // Error Handling
+                console.log("CekGonder Error creating object");
+            }else{
+                console.log(" CekGonder Success init");
+            }
+        }else{
+            print( "CekGonder.qml Component Not Ready");
+        }
     }
 
 }
