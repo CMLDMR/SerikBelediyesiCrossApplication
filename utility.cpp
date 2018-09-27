@@ -40,6 +40,11 @@ QString Utility::currentStringDay() const
     return QDate::currentDate().toString("dddd dd/MM/yyyy");
 }
 
+QString Utility::julianDaytoString(qint64 julianday) const
+{
+    return QDate::fromJulianDay(julianday).toString("dddd dd/MM/yyyy");
+}
+
 qint64 Utility::currentJulianDay() const
 {
     return QDate::currentDate().toJulianDay();

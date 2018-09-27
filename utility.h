@@ -23,6 +23,9 @@ public:
 
     Q_INVOKABLE QString currentStringDay() const;
 
+    Q_INVOKABLE QString julianDaytoString( qint64 julianday ) const;
+
+
 signals:
 
 public slots:
