@@ -366,22 +366,25 @@ Item {
             }
         }
 
+        // Meclis ve Diğer Menüler Aktifleştirilince menurowid Gösterilecek
         onWidthChanged: {
             if( headerRect.width > 1024 )
             {
-                menurowid.visible = true
+//                menurowid.visible = true
                 menuresponsiverowid.visible = false
                 logoheadermenu.width = 150
                 logoheadermenu.height = 150
                 subgrayid.height = 60;
                 responsivemenu.closeup();
             }else{
-                menurowid.visible = false
+//                menurowid.visible = false
                 menuresponsiverowid.visible = true
                 logoheadermenu.width = 75
                 logoheadermenu.height = 75
                 subgrayid.height = 40;
             }
+
+            menurowid.visible = false
         }
 
         DropShadow {

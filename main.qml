@@ -4,6 +4,9 @@ import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import Utility 0.7
 
+import Qt3D.Logic 2.0
+
+
 import com.mongodb 0.7
 
 import "Header"
@@ -18,6 +21,14 @@ Window {
     MongoDB{
         id: db
     }
+
+
+
+
+
+
+
+
 
     Utility{
         id: utility
