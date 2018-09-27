@@ -631,6 +631,7 @@ Item{
                                         width: obj7.width
                                         color: "#2b81b7"
                                         height: 65
+                                        property string oid: modelData.getElement("_id").Oid
 
                                         Rectangle{
                                             id: calismaiconrectid
@@ -659,6 +660,27 @@ Item{
                                                     text = text.substring(0,100);
                                                     text += "...";
                                                 }
+                                            }
+                                        }
+
+                                        MouseArea{
+                                            anchors.fill: parent
+                                            onClicked: {
+                                                print("Calisma Item Clicked");
+
+                                                var component = Qt.createComponent("qrc:/Main/CalismaDetay.qml");
+
+                                                if( component.status === Component.Ready )
+                                                {
+                                                    var sprite = component.createObject( mainslidetitemid , {"oid":oid});
+                                                    if (sprite === null) {
+                                                        // Error Handling
+                                                        console.log("Error creating CalismaDetay object");
+                                                    }else{
+                                                        console.log("CalismaDetay Success init");
+                                                    }
+                                                }
+
                                             }
                                         }
                                     }
