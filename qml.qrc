@@ -17,6 +17,7 @@
         <file>CekGonder.qml</file>
         <file>CekGonderImg.qml</file>
         <file>CalismaDetay.qml</file>
+        <file>CalismaItemResim.qml</file>
     </qresource>
     <qresource prefix="/img">
         <file>img/videoWidgetPlay.png</file>

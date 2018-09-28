@@ -213,6 +213,28 @@ Item {
                                                         source: db.fileurl(parent.itemoid);
                                                         anchors.margins: 5
                                                     }
+
+                                                    MouseArea{
+                                                        anchors.fill: parent
+                                                        onClicked: {
+                                                            var component = Qt.createComponent("qrc:/Main/CalismaItemResim.qml");
+                                                            if( component.status === Component.Ready )
+                                                            {
+                                                                var sprite = component.createObject( mainslidetitemid , {"imgurl":itemimg.source});
+                                                                if (sprite === null) {
+                                                                    // Error Handling
+                                                                    console.log("Error creating object");
+                                                                }else{
+                                                                    console.log("Success init");
+    //                                                                sprite.width = mainslidetitemid.width;
+    //                                                                sprite.height = mainslidetitemid.height
+                                                                }
+                                                            }else{
+                                                                print( "SlidePage.qml Component Not Ready");
+                                                            }
+                                                        }
+                                                    }
+
                                                 }
 
                                                 Component.onCompleted: {
