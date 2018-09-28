@@ -689,13 +689,42 @@ Item{
                             Component.onCompleted: {
                                 var filter = QBSON.newBSON();
                                 filter.addString("Yayında","Yayınlanıyor");
+
+
+                                var orfilter = QArray.newArray();
+
+                                var fenbirim = QBSON.newBSON();
+                                fenbirim.addString("Birim","Fen İşleri Müdürlüğü");
+
+                                var Tembirim = QBSON.newBSON();
+                                Tembirim.addString("Birim","Temizlik İşleri Müdürlüğü");
+
+                                var imabirim = QBSON.newBSON();
+                                imabirim.addString("Birim","İmar ve Şehircilik Müdürlüğü");
+
+                                var Parbirim = QBSON.newBSON();
+                                Parbirim.addString("Birim","Park ve Bahçeler Müdürlüğü");
+
+                                var Kadbirim = QBSON.newBSON();
+                                Kadbirim.addString("Birim","Kadın ve Aile Hizmetleri Müdürlüğü");
+
+                                orfilter.insertBson(fenbirim);
+                                orfilter.insertBson(Tembirim);
+                                orfilter.insertBson(imabirim);
+                                orfilter.insertBson(Parbirim);
+
+                                filter.addArray("$or",orfilter);
+
+                                filter.print();
+
+
                                 var option = QBSON.newBSON();
                                 option.addInt("limit",6);
                                 var projection = QBSON.newBSON();
                                 projection.addBool("Başlik",true);
                                 option.addBson("projection",projection);
                                 var sort = QBSON.newBSON();
-                                sort.addInt("_id",-1);
+                                sort.addInt("updateDate",-1);
                                 option.addBson("sort",sort);
                                 calismalistrepeaterid.model = db.find( "Çalışmalar" , filter , option );
 
