@@ -15,7 +15,7 @@ class QMLArray : public QObject , public QArray
     /// \brief count
     /// \return
     /// Return count of Element in Array
-    Q_PROPERTY(int count READ Count )
+    Q_PROPERTY(int count READ Count NOTIFY countChanged )
 
     /// \brief
     /// \return
@@ -123,6 +123,21 @@ public:
     /// \return
     /// get Count of Element inside from Array
     int Count() const;
+
+    ///
+    /// \brief removeElement
+    /// \param index
+    /// \return
+    /// Remove Element Selected index
+    Q_INVOKABLE bool removeElement(const int& index);
+
+    ///
+    /// \brief removeAll
+    /// Remove All Element in Array
+    Q_INVOKABLE void removeAll();
+
+signals:
+    void countChanged();
 
 
 };

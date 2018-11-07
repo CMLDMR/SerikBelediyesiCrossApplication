@@ -1,11 +1,15 @@
 #ifndef QBSON_H
 #define QBSON_H
 
+
 #if defined(QMONGODB_LIBRARY)
 #  define QMONGODBSHARED_EXPORT Q_DECL_EXPORT
 #else
 #  define QMONGODBSHARED_EXPORT Q_DECL_IMPORT
 #endif
+
+
+
 
 #include <QtCore/QObject>
 #include <QtCore/qglobal.h>
@@ -20,6 +24,8 @@
 
 
 
+
+
 class QBSON;
 
 class QMONGODBSHARED_EXPORT QArray
@@ -27,6 +33,8 @@ class QMONGODBSHARED_EXPORT QArray
     using container = QVector<QElement>;
 public:
     QArray() {}
+    QArray( const QArray& array );
+    virtual ~QArray();
 
     int count() const;
 
@@ -57,6 +65,8 @@ public:
     iterator end() { return mapData.end(); }
     const_iterator cbegin() const { return mapData.cbegin(); }
     const_iterator cend() const { return mapData.cend(); }
+
+    bool removeAt( const int& index);
 
 private:
     QVector<QElement> mapData;

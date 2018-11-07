@@ -4,8 +4,15 @@
 #include <QtCore/QObject>
 #include <QtCore/qglobal.h>
 #include <QVector>
-#include "qmongodb.h"
+#include <QQmlContext>
+#include <QtQml/QQmlApplicationEngine>
 
+
+
+
+
+
+#include "qmongodb.h"
 #include "qmlbson.h"
 #include "qmlelement.h"
 #include "qmlarray.h"
@@ -38,6 +45,15 @@ public:
     /// \param database
     /// Start Database. Must be Call before execute operation
     Q_INVOKABLE void start( const QString& mUrl , const QString& database );
+
+
+    ///
+    /// \brief count
+    /// \param collection
+    /// \param filter
+    /// \return
+    /// get count of matched field with filter
+    Q_INVOKABLE qint64 count( const QString& collection , QMLBSON* filter );
 
 
 
@@ -125,7 +141,17 @@ public:
     /// \param url
     /// \param dbName
     /// Call This Function before using QMongoDB Operation
-    static void instance(const QString& url , const QString dbName );
+     static void instance(const QString& url , const QString dbName );
+
+
+
+    static QObject *QMLElementSingletonProvider(QQmlEngine *engine, QJSEngine *scriptEngine);
+
+    static QObject *QMLBSONSingletonProvider(QQmlEngine *engine, QJSEngine *scriptEngine);
+
+    static QObject *QMLArraySingletonProvider(QQmlEngine *engine, QJSEngine *scriptEngine);
+
+
 
 
 private:
@@ -136,6 +162,27 @@ private:
 
 };
 
+
+
+
+
+static void registerQmlMongoTypes() {
+
+
+    qmlRegisterType<QMLElement>("com.mongodb", MAJOR, MINOR, "QMLElement");
+    qmlRegisterType<QMLMongoDB>("com.mongodb", MAJOR, MINOR, "MongoDB");
+    qmlRegisterType<QMLBSON>("com.mongodb", MAJOR, MINOR, "QMLBSON");
+    qmlRegisterType<QMLArray>("com.mongodb", MAJOR, MINOR, "QMLArray");
+
+
+    qmlRegisterSingletonType<QMLElement>("com.mongodb", MAJOR, MINOR, "QElement", QMLMongoDB::QMLElementSingletonProvider);
+    qmlRegisterSingletonType<QMLBSON>("com.mongodb", MAJOR, MINOR, "QBSON", QMLMongoDB::QMLBSONSingletonProvider);
+    qmlRegisterSingletonType<QMLArray>("com.mongodb", MAJOR, MINOR, "QArray", QMLMongoDB::QMLArraySingletonProvider);
+
+}
+
+
 Q_DECLARE_METATYPE(QMLMongoDB);
+
 
 #endif // QMLMONGODB_H

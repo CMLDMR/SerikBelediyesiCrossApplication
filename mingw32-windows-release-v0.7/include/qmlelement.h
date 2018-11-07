@@ -13,21 +13,21 @@ class QMLElement : public QObject , public QElement
 {
     Q_OBJECT
     Q_PROPERTY( QString Key READ Key NOTIFY keyChanged )
-    Q_PROPERTY( double Double READ getDouble )
+    Q_PROPERTY( double Double READ getDouble NOTIFY doubleChanged )
     Q_PROPERTY( QString String READ getString NOTIFY stringChanged )
-    Q_PROPERTY( int Int READ getInt )
+    Q_PROPERTY( int Int READ getInt NOTIFY intChanged )
     Q_PROPERTY( QVariant Int64 READ getInt64 NOTIFY int64Changed )
     Q_PROPERTY( bool Bool READ getBool )
     Q_PROPERTY( QString TypeName READ TypeName )
     Q_PROPERTY( Type Type READ getElementType )
     Q_PROPERTY( QString Oid READ Oid NOTIFY oidChanged )
     Q_PROPERTY( QMLBSON* Bson READ getBson NOTIFY bsonChanged )
-    Q_PROPERTY( QMLArray* Array READ getArray )
+    Q_PROPERTY( QMLArray* Array READ getArray NOTIFY arrayChanged )
 public:
     explicit QMLElement( QObject *parent = nullptr );
     QMLElement( const QMLElement& element );
     QMLElement( const QElement& element );
-    virtual ~QMLElement(){ qDebug() << "QMLElement Desturctor"; }
+    virtual ~QMLElement(){  }
 
     QMLElement& operator=(const QMLElement& other);
 
@@ -59,7 +59,7 @@ public:
 
     Q_INVOKABLE void setData( const QString& key , const QString& value  , const Type& type = B_utf8 );
     Q_INVOKABLE void setData( const QString& key , const double& value);
-    Q_INVOKABLE void setData( const QString& key , const int& value , const Type& type = B_int32 );
+    Q_INVOKABLE void setData(const QString& key , const int& value );
     Q_INVOKABLE void setData( const QString& key , const bool& value );
     Q_INVOKABLE void setData( const QVariant &element );
 
@@ -99,6 +99,9 @@ signals:
     void oidChanged();
     void bsonChanged();
     void int64Changed();
+    void doubleChanged();
+    void intChanged();
+    void arrayChanged();
 
 public slots:
 
