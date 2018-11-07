@@ -4,7 +4,7 @@ import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 
 import com.mongodb 0.7
-import Utility 0.7
+//import Utility 0.7
 
 
 Item {
@@ -140,7 +140,7 @@ Item {
             }
 
             var html = obj.getElement("İçerik").String;
-            html = utility.RepairHTML(html,parent.width);
+            html = Utility.repairHTML(html,parent.width);
 
             contenttext.text = html;
         }

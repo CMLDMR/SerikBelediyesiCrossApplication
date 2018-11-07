@@ -571,12 +571,12 @@ Item{
                                 filter.addString("Yayında","Yayında");
 
                                 var lteFilter = QBSON.newBSON();
-                                lteFilter.addDouble("$gte",utility.currentDateDouble());
+                                lteFilter.addDouble("$gte",Utility.currentDateDouble());
                                 filter.addBson("Bitiş Tarihi",lteFilter);
 
 
 
-                                print( "Date: " + utility.currentDateDouble() );
+                                print( "Date: " + Utility.currentDateDouble() );
 
 
                                 var option = QBSON.newBSON();

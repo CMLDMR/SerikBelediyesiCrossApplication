@@ -36,4 +36,7 @@
     <qresource prefix="/Galeri">
         <file>VideoPlayer.qml</file>
     </qresource>
+    <qresource prefix="/Personel">
+        <file>Giris.qml</file>
+    </qresource>
 </RCC>

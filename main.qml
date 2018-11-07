@@ -2,9 +2,7 @@ import QtQuick 2.11
 import QtQuick.Window 2.11
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
-import Utility 0.7
-
-import Qt3D.Logic 2.0
+//import Utility 0.7
 
 
 import com.mongodb 0.7
@@ -18,9 +16,9 @@ Window {
     height: 640
     title: qsTr("Serik Belediyesi Resmi Uygulaması - 2018")
 
-    MongoDB{
-        id: db
-    }
+//    MongoDB{
+//        id: db
+//    }
 
 
 
@@ -30,9 +28,9 @@ Window {
 
 
 
-    Utility{
-        id: utility
-    }
+//    Utility{
+//        id: utility
+//    }
 
     // Main Rectangle All İtems is İnside
     Rectangle{

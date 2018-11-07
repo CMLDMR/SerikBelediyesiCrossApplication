@@ -70,7 +70,6 @@ Item {
                         onReleased: {
                             cekgonderbuttonid.color = "transparent";
                             cekgondertextid.color = "white";
-
                         }
                     }
                 }
@@ -87,6 +86,27 @@ Item {
                         font.pointSize: 10
                     }
                     radius: 5
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            var component = Qt.createComponent("qrc:/Personel/Giris.qml");
+
+                            if( component.status === Component.Ready )
+                            {
+                                var girisitem = component.createObject( mainRectid );
+                                if( girisitem === null )
+                                {
+                                    print( "Giris item Can Not Successfully" );
+                                }else{
+                                    print( "Giris Successfully" );
+                                    closeup();
+                                }
+                            }else{
+                                print( "Giris Component Can Not Ready" );
+                            }
+                        }
+                    }
                 }
 
 //                Rectangle{

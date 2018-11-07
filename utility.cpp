@@ -5,7 +5,7 @@ Utility::Utility(QObject *parent) : QObject(parent)
 
 }
 
-QString Utility::RepairHTML(QString html, int width)
+QString Utility::repairHTML(QString html, int width)
 {
     int count = html.count("src=");
     int index = 0;

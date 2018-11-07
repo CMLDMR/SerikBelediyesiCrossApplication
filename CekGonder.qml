@@ -9,7 +9,7 @@ import QtPositioning 5.8
 import QtLocation 5.9
 
 import com.mongodb 0.7
-import Utility 0.7
+//import Utility 0.7
 
 Item {
 

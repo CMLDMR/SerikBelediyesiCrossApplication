@@ -13,7 +13,7 @@ class Utility : public QObject
 public:
     explicit Utility(QObject *parent = nullptr);
 
-    Q_INVOKABLE QString RepairHTML( QString html , int width );
+    Q_INVOKABLE QString repairHTML( QString html , int width );
 
     Q_INVOKABLE double currentDateDouble();
 
@@ -29,6 +29,8 @@ public:
 signals:
 
 public slots:
+
+
 };
 
 #endif // UTILITY_H

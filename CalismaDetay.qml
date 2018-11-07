@@ -4,7 +4,7 @@ import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 
 import com.mongodb 0.7
-import Utility 0.7
+//import Utility 0.7
 
 
 Item {
@@ -349,8 +349,8 @@ Item {
         calismaheaderid.calismaObj = obj;
 
         img.source = db.fileurl( calismaheaderid.calismaObj.getElement("Küçük Resim").Oid );
-        baslamatext.text = "Başlama Tarihi: "+utility.julianDaytoString(calismaheaderid.calismaObj.getElement("Başlama Tarihi").Int64);
-        songuncellemeid.text = "Son Güncelleme: "+utility.julianDaytoString(calismaheaderid.calismaObj.getElement("updateDate").Int64);
+        baslamatext.text = "Başlama Tarihi: "+Utility.julianDaytoString(calismaheaderid.calismaObj.getElement("Başlama Tarihi").Int64);
+        songuncellemeid.text = "Son Güncelleme: "+Utility.julianDaytoString(calismaheaderid.calismaObj.getElement("updateDate").Int64);
 
 
         asamalistid.list = obj.getElement("Aşama").Array;
