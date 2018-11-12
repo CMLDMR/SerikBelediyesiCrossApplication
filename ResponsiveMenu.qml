@@ -44,6 +44,20 @@ Item {
                 Rectangle{
                     width: parent.w;
                     height: 50
+                    color: "orange"
+                    Text{
+                        anchors.centerIn: parent
+                        text: "Serik"
+                        color: "white"
+                        font.bold: true
+                        font.pointSize: 10
+                    }
+                    radius: 5
+                }
+
+                Rectangle{
+                    width: parent.w;
+                    height: 50
                     color: "transparent"
                     id: cekgonderbuttonid
                     Text{
@@ -78,6 +92,7 @@ Item {
                     width: parent.w;
                     height: 50
                     color: "#aa4682b4"
+                    id: girisBtn
                     Text{
                         anchors.centerIn: parent
                         text: "Giriş"
@@ -100,6 +115,7 @@ Item {
                                     print( "Giris item Can Not Successfully" );
                                 }else{
                                     print( "Giris Successfully" );
+                                    responsiveitemid.triggered();
                                     closeup();
                                 }
                             }else{
@@ -109,19 +125,47 @@ Item {
                     }
                 }
 
-//                Rectangle{
-//                    width: parent.w;
-//                    height: 50
-//                    color: "orange"
-//                    Text{
-//                        anchors.centerIn: parent
-//                        text: "Serik"
-//                        color: "white"
-//                        font.bold: true
-//                        font.pointSize: 10
-//                    }
-//                    radius: 5
-//                }
+
+
+                Rectangle{
+                    id: personelMenu
+                    width: parent.w;
+                    height: 50
+                    color: "DarkSlateBlue"
+                    visible: false;
+                    Text{
+                        anchors.centerIn: parent
+                        text: "Personel Menü"
+                        color: "white"
+                        font.bold: true
+                        font.pointSize: 10
+                    }
+                    radius: 5
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            responsiveitemid.triggered();
+                            closeup();
+                            loadPersonelMenu();
+                        }
+                    }
+                }
+
+                Rectangle{
+                    id: vatandasMenu
+                    width: parent.w;
+                    height: 50
+                    color: "DeepPink"
+                    visible: false;
+                    Text{
+                        anchors.centerIn: parent
+                        text: "Personel Menü"
+                        color: "white"
+                        font.bold: true
+                        font.pointSize: 10
+                    }
+                    radius: 5
+                }
 
             }
 
@@ -175,7 +219,7 @@ Item {
         if( component.status === Component.Ready )
         {
             var sprite = component.createObject( mainRectid );
-            if (sprite === null) {
+            if ( sprite === null ) {
                 // Error Handling
                 console.log("CekGonder Error creating object");
             }else{
@@ -184,6 +228,35 @@ Item {
         }else{
             print( "CekGonder.qml Component Not Ready");
         }
+    }
+
+
+
+    function enableMenuBtn(){
+        print ("Enable Basinda Biz");
+        personelMenu.visible = true;
+        girisBtn.visible = false;
+    }
+
+
+    function loadPersonelMenu(){
+
+
+        var com = Qt.createComponent("qrc:/Personel/PersonelMenu.qml");
+
+        if( com.status === Component.Ready )
+        {
+
+            var e = com.createObject(root);
+
+            if( e === null )
+            {
+                print ("load Error: Personel Menu");
+            }
+
+        }
+
+
     }
 
 }
