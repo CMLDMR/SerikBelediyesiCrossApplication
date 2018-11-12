@@ -321,7 +321,8 @@ Item {
                         width: 100
                         Rectangle{
                             color: "orange"
-                            anchors.centerIn: parent
+//                            anchors.centerIn: parent
+                            anchors.fill: parent
                             Text {
                                 id: serikmenuitem
                                 text: qsTr("Serik")
@@ -335,9 +336,57 @@ Item {
                                 width: parent.width
                                 wrapMode: Text.WordWrap
                             }
-                            width: serikmenuitem.width
-                            height: serikmenuitem.height
+//                            width: serikmenuitem.width
+//                            height: serikmenuitem.height
                             radius: 3
+                        }
+                    }
+
+                    Rectangle{
+                        color: "transparent"
+                        height: parent.height
+                        width: 100
+                        Rectangle{
+                            color: "DeepSkyBlue "
+//                            anchors.centerIn: parent
+                            anchors.fill: parent
+                            Text {
+                                id: girismenuitem
+                                text: qsTr("Giriş")
+                                color: "white"
+                                font.bold: true
+                                verticalAlignment: Text.AlignVCenter
+                                horizontalAlignment: Text.AlignHCenter
+                                font.pointSize: 10
+                                font.family: "Tahoma"
+                                anchors.centerIn: parent
+                                width: parent.width
+                                wrapMode: Text.WordWrap
+                            }
+//                            width: serikmenuitem.width
+//                            height: serikmenuitem.height
+                            radius: 3
+                            MouseArea{
+                                anchors.fill: parent
+                                onClicked: {
+
+                                    var component = Qt.createComponent("qrc:/Personel/Giris.qml");
+
+                                    if( component.status === Component.Ready )
+                                    {
+                                        var girisitem = component.createObject( mainRectid );
+                                        if( girisitem === null )
+                                        {
+                                            print( "Giris item Can Not Successfully" );
+                                        }else{
+                                            print( "Giris Successfully" );
+                                        }
+                                    }else{
+                                        print( "Giris Component Can Not Ready" );
+                                    }
+
+                                }
+                            }
                         }
                     }
                 }
@@ -370,21 +419,21 @@ Item {
         onWidthChanged: {
             if( headerRect.width > 1024 )
             {
-//                menurowid.visible = true
+                menurowid.visible = true
                 menuresponsiverowid.visible = false
                 logoheadermenu.width = 150
                 logoheadermenu.height = 150
                 subgrayid.height = 60;
                 responsivemenu.closeup();
             }else{
-//                menurowid.visible = false
+                menurowid.visible = false
                 menuresponsiverowid.visible = true
                 logoheadermenu.width = 75
                 logoheadermenu.height = 75
                 subgrayid.height = 40;
             }
 
-            menurowid.visible = false
+//            menurowid.visible = false
         }
 
         DropShadow {
