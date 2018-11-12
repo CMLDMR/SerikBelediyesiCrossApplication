@@ -13,6 +13,8 @@
 #include "utility.h"
 #include "../url.h" // Remove this line and put on your own database in QString url and QString dbname
 
+#include "cppsrc/personel.h"
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -27,9 +29,14 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-    engine.rootContext()->setContextProperty("db",new QMLMongoDB());
+
+    auto db = new QMLMongoDB();
+    engine.rootContext()->setContextProperty("db",db);
 
     engine.rootContext()->setContextProperty("Utility",new Utility());
+
+    engine.rootContext()->setContextProperty("Personel",new Personel(db->getDb()));
+
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
