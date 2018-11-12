@@ -11,6 +11,7 @@ import "Header"
 import "Main"
 
 Window {
+    id: mRoot
     visible: true
     width: 360
     height: 640
@@ -21,16 +22,23 @@ Window {
 //    }
 
 
+    onWidthChanged: {
+        Utility.rootWidth = width;
+        Utility.rootHeight = height;
+    }
 
 
 
+    onHeightChanged: {
+        Utility.rootWidth = width;
+        Utility.rootHeight = height;
+    }
 
+    Component.onCompleted: {
+        Utility.rootWidth = width;
+        Utility.rootHeight = height;
+    }
 
-
-
-//    Utility{
-//        id: utility
-//    }
 
     // Main Rectangle All İtems is İnside
     Rectangle{
@@ -55,20 +63,6 @@ Window {
             anchors.bottom: parent.bottom
             width: parent.width
         }
-
-//        Rectangle{
-//            id: footerid
-//            width: parent.width
-//            height: 50
-//            color: "orange"
-//            anchors.bottom: parent.bottom
-//        }
-
-
-
-
-
-
 
     }
 
