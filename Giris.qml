@@ -50,9 +50,10 @@ Item {
                         TextInput{
                             id: telefoninput
                             anchors.fill: parent
-                            text: ""
+                            text: "05326778051"
                             verticalAlignment: Text.AlignVCenter
                             horizontalAlignment: Text.AlignHCenter
+
                             Text {
                                 id: telefonnumarasiText
                                 color: "#bdbdbd"
@@ -284,6 +285,7 @@ Item {
                                             horizontalAlignment: Text.AlignHCenter
                                             verticalAlignment: Text.AlignVCenter
                                             echoMode: TextInput.PasswordEchoOnEdit
+                                            text: "64091"
                                             Text {
                                                 text: qsTr("Şifrenizi Giriniz")
                                                 font.bold: true
@@ -314,9 +316,45 @@ Item {
 
                                                     filter.addString("telefon",telefoninput.text);
 
-                                                    filter.addString("password",sifreinput.text);
+                                                    filter.addString("password",passwordinput.text);
+
+                                                    filter.print();
+
+                                                    if( Personel.login( telefoninput.text , passwordinput.text ) ){
 
 
+                                                        responsiveitemid.enableMenuBtn();
+
+
+//                                                        var com = Qt.createComponent("qrc:/Personel/PersonelMenu.qml");
+
+//                                                        if( com.status === Component.Ready )
+//                                                        {
+
+//                                                            var e = com.createObject(root);
+
+//                                                            root.widthChanged.connect(function(){
+
+//                                                                print ("Root Width Chaged");
+
+
+
+
+
+
+//                                                            });
+
+////                                                            e.width = Utility.rootWidth;
+////                                                            e.height = Utility.rootHeight;
+
+
+//                                                        }
+
+
+                                                        girisPage.destroy();
+
+
+                                                    }
 
                                                 }
                                             }
