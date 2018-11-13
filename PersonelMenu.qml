@@ -39,6 +39,7 @@ Item {
                 anchors.margins: 4
                 spacing: 10
                 anchors.topMargin: 30
+                anchors.bottomMargin: 50
 
                 Rectangle {
                     width: 150
@@ -117,6 +118,29 @@ Item {
                     }
                 }
             }
+
+            Rectangle {
+                width: parent.width
+                height: 50
+                color: "crimson"
+                anchors.bottom: parent.bottom
+                Text {
+                    text: qsTr("Kapat")
+                    font.bold: true
+                    font.pointSize: 10
+                    font.family: "Tahoma"
+                    color: "white"
+                    anchors.centerIn: parent
+                }
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        item.destroy();
+                    }
+                }
+            }
+
+
         }
     }
 
