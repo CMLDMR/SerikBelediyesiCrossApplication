@@ -18,6 +18,10 @@ Item {
         height: parent.height
         color: "#80161313"
 
+        MouseArea{
+            anchors.fill: parent
+        }
+
         Rectangle{
 
             id: sliderPageContentRectid
