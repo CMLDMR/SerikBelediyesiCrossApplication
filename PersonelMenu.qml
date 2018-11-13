@@ -67,12 +67,18 @@ Item {
                     height: 50
                     color: "black"
                     Text {
-                        text: qsTr("Basında Biz")
+                        text: qsTr("Personel Yönetimi")
                         font.bold: true
                         font.pointSize: 10
                         font.family: "Tahoma"
                         color: "white"
                         anchors.centerIn: parent
+                    }
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            loadPersonelYonetimPaneli();
+                        }
                     }
                 }
 
@@ -162,6 +168,26 @@ Item {
             }
 
         }
+
+    }
+
+
+    function loadPersonelYonetimPaneli(){
+
+        var com = Qt.createComponent("qrc:/Personel/PersonelYonetim.qml");
+
+        if( com.status === Component.Ready )
+        {
+
+            var e = com.createObject(item);
+
+            if( e === null )
+            {
+                print ("Error: Load PersonelYonetim.qml");
+            }
+
+        }
+
 
     }
 
