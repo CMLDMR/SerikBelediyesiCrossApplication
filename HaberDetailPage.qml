@@ -180,7 +180,7 @@ Item {
 
         var w = parent.width > 600 ? 600 : parent.width;
 
-        var html = utility.RepairHTML( e.getElement("html").String , w );
+        var html = Utility.repairHTML( e.getElement("html").String , w );
 
         haberdetailid.text = html;
         haberTitleid.text = e.getElement("Başlık").String;
