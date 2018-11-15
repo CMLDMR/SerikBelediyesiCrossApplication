@@ -318,44 +318,9 @@ Item {
 
                                                     filter.addString("password",passwordinput.text);
 
-                                                    filter.print();
-
                                                     if( Personel.login( telefoninput.text , passwordinput.text ) ){
-
-
-                                                        responsiveitemid.enableMenuBtn();
-
-
-//                                                        var com = Qt.createComponent("qrc:/Personel/PersonelMenu.qml");
-
-//                                                        if( com.status === Component.Ready )
-//                                                        {
-
-//                                                            var e = com.createObject(root);
-
-//                                                            root.widthChanged.connect(function(){
-
-//                                                                print ("Root Width Chaged");
-
-
-
-
-
-
-//                                                            });
-
-////                                                            e.width = Utility.rootWidth;
-////                                                            e.height = Utility.rootHeight;
-
-
-//                                                        }
-
-
                                                         girisPage.destroy();
-
-
                                                     }
-
                                                 }
                                             }
                                         }

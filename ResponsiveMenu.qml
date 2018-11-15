@@ -1,6 +1,6 @@
-import QtQuick 2.9
+import QtQuick 2.11
 import QtGraphicalEffects 1.0
-import QtQuick.Controls 2.3
+import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 
 
@@ -9,7 +9,7 @@ Item {
 
     anchors.fill: parent
     id: responsiveitemid
-    signal triggered();
+//    signal triggered();
 //    z: 1
 
     Rectangle
@@ -53,6 +53,13 @@ Item {
                         font.pointSize: 10
                     }
                     radius: 5
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            print ("Serik Button");
+                            headerid.closeMenu();
+                        }
+                    }
                 }
 
                 Rectangle{
@@ -72,8 +79,8 @@ Item {
                     MouseArea{
                         anchors.fill: parent
                         onClicked: {
-                            responsiveitemid.triggered();
-                            closeup();
+//                            closeup();
+                            headerid.closeMenu();
                             loadCekGonder();
                         }
 
@@ -93,6 +100,7 @@ Item {
                     height: 50
                     color: "#aa4682b4"
                     id: girisBtn
+                    visible: !Personel.logined
                     Text{
                         anchors.centerIn: parent
                         text: "Giriş"
@@ -115,8 +123,9 @@ Item {
                                     print( "Giris item Can Not Successfully" );
                                 }else{
                                     print( "Giris Successfully" );
-                                    responsiveitemid.triggered();
-                                    closeup();
+//                                    responsiveitemid.triggered();
+//                                    closeup();
+                                    headerid.closeMenu();
                                 }
                             }else{
                                 print( "Giris Component Can Not Ready" );
@@ -132,7 +141,7 @@ Item {
                     width: parent.w;
                     height: 50
                     color: "DarkSlateBlue"
-                    visible: false;
+                    visible: Personel.logined;
                     Text{
                         anchors.centerIn: parent
                         text: "Personel Menü"
@@ -144,8 +153,9 @@ Item {
                     MouseArea{
                         anchors.fill: parent
                         onClicked: {
-                            responsiveitemid.triggered();
-                            closeup();
+//                            responsiveitemid.triggered();
+//                            closeup();
+                            headerid.closeMenu();
                             loadPersonelMenu();
                         }
                     }
@@ -165,6 +175,32 @@ Item {
                         font.pointSize: 10
                     }
                     radius: 5
+                }
+
+
+
+                Rectangle{
+                    id: cikis
+                    width: parent.w;
+                    height: 50
+                    color: "crimson"
+                    visible: Personel.logined
+                    Text{
+                        anchors.centerIn: parent
+                        text: "Çıkış"
+                        color: "white"
+                        font.bold: true
+                        font.pointSize: 10
+                    }
+                    radius: 5
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            Personel.logout();
+                            headerid.closeMenu();
+//                            closeup();
+                        }
+                    }
                 }
 
             }
@@ -231,16 +267,7 @@ Item {
     }
 
 
-
-    function enableMenuBtn(){
-        print ("Enable Basinda Biz");
-        personelMenu.visible = true;
-        girisBtn.visible = false;
-    }
-
-
     function loadPersonelMenu(){
-
 
         var com = Qt.createComponent("qrc:/Personel/PersonelMenu.qml");
 

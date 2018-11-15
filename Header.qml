@@ -1,4 +1,4 @@
-import QtQuick 2.9
+import QtQuick 2.11
 import QtGraphicalEffects 1.0
 
 Item {
@@ -25,11 +25,10 @@ Item {
                 onClicked: {
                     if( menuresposiveiconid.rotation == 0 )
                     {
-                        responsivemenu.openup();
-                        responsivemenurotate.running = true;
+                        openMenu();
                     }else{
-                        responsivemenu.closeup();
-                        responsivemenurotateback.running = true;
+                        closeMenu();
+
                     }
                 }
                 onPressed: {
@@ -137,11 +136,9 @@ Item {
                         onClicked: {
                             if( menuresposiveiconid.rotation == 0 )
                             {
-                                responsivemenu.openup();
-                                responsivemenurotate.running = true;
+                                openMenu();
                             }else{
-                                responsivemenu.closeup();
-                                responsivemenurotateback.running = true;
+                                closeMenu();
                             }
                         }
                     }
@@ -379,7 +376,9 @@ Item {
                                         {
                                             print( "Giris item Can Not Successfully" );
                                         }else{
-                                            print( "Giris Successfully" );
+
+                                            closeMenu();
+
                                         }
                                     }else{
                                         print( "Giris Component Can Not Ready" );
@@ -403,16 +402,16 @@ Item {
             width: parent.width/2
             height: 350
             anchors.centerIn: parent
-            onTriggered: {
-                if( menuresposiveiconid.rotation == 0 )
-                {
-                    responsivemenu.openup();
-                    responsivemenurotate.running = true;
-                }else{
-                    responsivemenu.closeup();
-                    responsivemenurotateback.running = true;
-                }
-            }
+//            onTriggered: {
+//                if( menuresposiveiconid.rotation == 0 )
+//                {
+//                    responsivemenu.openup();
+//                    responsivemenurotate.running = true;
+//                }else{
+//                    responsivemenu.closeup();
+//                    responsivemenurotateback.running = true;
+//                }
+//            }
         }
 
         // Meclis ve Diğer Menüler Aktifleştirilince menurowid Gösterilecek
@@ -450,6 +449,19 @@ Item {
 
     }
 
+
+
+    function openMenu(){
+
+        responsivemenu.openup();
+        responsivemenurotate.running = true;
+
+    }
+
+    function closeMenu() {
+        responsivemenu.closeup();
+        responsivemenurotateback.running = true;
+    }
 }
 
 
