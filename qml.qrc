@@ -39,6 +39,7 @@
     <qresource prefix="/Personel">
         <file>Giris.qml</file>
         <file>PersonelMenu.qml</file>
+        <file>PersonelYonetim.qml</file>
     </qresource>
     <qresource lang="TR" prefix="/Basin">
         <file>BasindaBiz.qml</file>

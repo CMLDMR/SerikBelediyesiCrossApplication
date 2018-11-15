@@ -61,7 +61,7 @@ int Utility::rootWidth() const
 
 void Utility::setRootWidth(int rootWidth)
 {
-    std::cout << "Width Changed " << rootWidth << std::endl;
+//    std::cout << "Width Changed " << rootWidth << std::endl;
 
     mRootWidth = rootWidth;
     emit rootWidthChanged();
@@ -74,7 +74,7 @@ int Utility::rootHeight() const
 
 void Utility::setRootHeight(int rootHeight)
 {
-    std::cout << "Height Changed " << rootHeight << std::endl;
+//    std::cout << "Height Changed " << rootHeight << std::endl;
     mRootHeight = rootHeight;
     emit rootHeightChanged();
 }
