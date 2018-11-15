@@ -25,19 +25,40 @@ bool Personel::login(const QString &tel, const QString &password)
 
     auto var = this->db->find_one("Personel",filter);
 
-    mPersonelDocument->append(var.getMaplist());
-
-
-    std::cout << mPersonelDocument.get()->tojson().c_str() << std::endl;
-
 
     if( var.isEmpty() )
     {
+        mLogined = false;
         return false;
+
+
     }else{
+
+        mLogined = true;
+
+        emit loginned();
+
+        mPersonelDocument->append(var.getMaplist());
+
         return true;
     }
 
 
+}
+
+void Personel::logout()
+{
+    mLogined = false;
+    emit loginned();
+}
+
+bool Personel::logined() const
+{
+    return mLogined;
+}
+
+void Personel::setLogined(bool logined)
+{
+    mLogined = logined;
 }
 
