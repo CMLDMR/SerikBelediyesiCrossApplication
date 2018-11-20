@@ -43,7 +43,7 @@ Item {
             ScrollView{
                 anchors.fill: parent
                 anchors.topMargin: 60
-                anchors.bottomMargin: 50
+                anchors.bottomMargin: 100
                 id: scroll
                 clip: true
 
