@@ -20,7 +20,7 @@ Item {
         MouseArea{
             anchors.fill: parent
             onClicked: {
-//                girisPage.destroy();
+                //                girisPage.destroy();
             }
         }
 
@@ -80,45 +80,45 @@ Item {
                         height: 2
                     }
 
-                    Rectangle{
-                        id: sifreToprect
-                        width: 0
-                        height: 50
-                        clip: true
-                        TextInput{
-                            id: sifreinput
-                            anchors.fill: parent
-                            text: ""
-                            verticalAlignment: Text.AlignVCenter
-                            horizontalAlignment: Text.AlignHCenter
-                            echoMode: TextInput.PasswordEchoOnEdit
-                            Text {
-                                id: sifre
-                                color: "#bdbdbd"
-                                text: qsTr("Personel Şifrenizi Giriniz")
-                                font.family: "Tahoma"
-                                font.bold: true
-                                font.underline: true
-                                verticalAlignment: Text.AlignVCenter
-                                horizontalAlignment: Text.AlignHCenter
-                                font.pointSize: 10
-                                visible: !parent.text
-                                anchors.centerIn: parent
-                            }
-                            font.family: "Tahoma"
-                            font.bold: true
-                            font.pointSize: 10
-                        }
-                    }
+                    //                    Rectangle{
+                    //                        id: sifreToprect
+                    //                        width: 0
+                    //                        height: 50
+                    //                        clip: true
+                    //                        TextInput{
+                    //                            id: sifreinput
+                    //                            anchors.fill: parent
+                    //                            text: ""
+                    //                            verticalAlignment: Text.AlignVCenter
+                    //                            horizontalAlignment: Text.AlignHCenter
+                    //                            echoMode: TextInput.PasswordEchoOnEdit
+                    //                            Text {
+                    //                                id: sifre
+                    //                                color: "#bdbdbd"
+                    //                                text: qsTr("Personel Şifrenizi Giriniz")
+                    //                                font.family: "Tahoma"
+                    //                                font.bold: true
+                    //                                font.underline: true
+                    //                                verticalAlignment: Text.AlignVCenter
+                    //                                horizontalAlignment: Text.AlignHCenter
+                    //                                font.pointSize: 10
+                    //                                visible: !parent.text
+                    //                                anchors.centerIn: parent
+                    //                            }
+                    //                            font.family: "Tahoma"
+                    //                            font.bold: true
+                    //                            font.pointSize: 10
+                    //                        }
+                    //                    }
 
 
-                    PropertyAnimation{
-                        id: sifreopen
-                        target: sifreToprect
-                        property: "width"
-                        to: parent.width
-                        duration: 250
-                    }
+                    //                    PropertyAnimation{
+                    //                        id: sifreopen
+                    //                        target: sifreToprect
+                    //                        property: "width"
+                    //                        to: parent.width
+                    //                        duration: 250
+                    //                    }
 
                     Rectangle{
                         width: parent.width
@@ -129,7 +129,7 @@ Item {
                         SwipeView{
                             id: loginstates
                             anchors.fill: parent
-//                            interactive: false
+                            interactive: false
                             currentIndex: 0
                             clip: true
 
@@ -175,22 +175,16 @@ Item {
                                                 var VatandasCount = db.count("TC",filterv);
                                                 if( PersonelCount !== 0 && VatandasCount !== 0 )
                                                 {
-                                                    print( "PERSONEL VATANDAS");
                                                     loginstates.currentIndex = 1;
                                                 }else{
                                                     if( PersonelCount !== 0 )
                                                     {
-                                                        print( "PERSONEL");
                                                         loginstates.currentIndex = 2;
-                                                        sifreopen.start();
                                                     }else{
                                                         if( VatandasCount !== 0 )
                                                         {
-                                                            print( "VATANDAS");
                                                             loginstates.currentIndex = 3;
                                                         }else{
-                                                            print( "Hatalı Telefon NUmarası");
-                                                            print( "Yanlış Telefon Numarası");
                                                             loginstates.currentIndex = 4;
                                                         }
                                                     }
@@ -311,13 +305,6 @@ Item {
                                             MouseArea{
                                                 anchors.fill: parent
                                                 onClicked: {
-
-                                                    var filter = QBSON.newBSON();
-
-                                                    filter.addString("telefon",telefoninput.text);
-
-                                                    filter.addString("password",passwordinput.text);
-
                                                     if( Personel.login( telefoninput.text , passwordinput.text ) ){
                                                         girisPage.destroy();
                                                     }
@@ -332,9 +319,57 @@ Item {
                             Item {
                                 id: vatandas
                                 Rectangle{
-                                    color: "yellow"
+                                    color: "LightSteelBlue"
                                     width: parent.width
                                     height: 100
+                                    Column{
+                                        anchors.fill: parent
+                                        TextInput{
+                                            id: vatpasswordinput
+                                            width: parent.width
+                                            height: parent.height/2
+                                            font.bold: true
+                                            font.pointSize: 10
+                                            font.family: "Tahoma"
+                                            color: "black"
+                                            horizontalAlignment: Text.AlignHCenter
+                                            verticalAlignment: Text.AlignVCenter
+                                            echoMode: TextInput.PasswordEchoOnEdit
+                                            text: "8564091"
+                                            Text {
+                                                text: qsTr("Şifrenizi Giriniz")
+                                                font.bold: true
+                                                font.pointSize: 10
+                                                font.family: "Tahoma"
+                                                color: "gray"
+                                                anchors.centerIn: parent
+                                                visible: !parent.text
+                                            }
+                                        }
+                                        Rectangle {
+                                            width: parent.width
+                                            height: parent.height/2
+                                            color: "black"
+                                            Text {
+                                                text: qsTr("Giriş")
+                                                font.bold: true
+                                                font.pointSize: 10
+                                                font.family: "Tahoma"
+                                                color: "white"
+                                                anchors.centerIn: parent
+                                            }
+                                            MouseArea{
+                                                anchors.fill: parent
+                                                onClicked: {
+                                                    if( User.login( telefoninput.text , vatpasswordinput.text ) ){
+                                                        girisPage.destroy();
+                                                    }else{
+                                                        Utility.information = "Yanlış Telefon Numarası yada Şifre Girdiniz"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
 
