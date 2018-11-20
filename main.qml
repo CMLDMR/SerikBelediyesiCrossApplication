@@ -34,11 +34,6 @@ Window {
         Utility.rootHeight = height;
     }
 
-//    Component.onCompleted: {
-//        Utility.rootWidth = width;
-//        Utility.rootHeight = height;
-//    }
-
 
     // Main Rectangle All İtems is İnside
     Rectangle{
@@ -57,8 +52,17 @@ Window {
         MainRect{
             id: mainRectid
             anchors.top: headerid.bottom
+            anchors.topMargin: 20
             anchors.bottom: parent.bottom
             width: parent.width
+            onWidthChanged: {
+                if( width > 1024 )
+                {
+                    anchors.topMargin = 23
+                }else{
+                    anchors.topMargin = 0
+                }
+            }
         }
     }
 
