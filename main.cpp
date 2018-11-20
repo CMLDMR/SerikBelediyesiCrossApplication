@@ -14,6 +14,7 @@
 #include "../url.h" // Remove this line and put on your own database in QString url and QString dbname
 
 #include "cppsrc/personel.h"
+#include "cppsrc/user.h"
 
 int main(int argc, char *argv[])
 {
@@ -32,10 +33,9 @@ int main(int argc, char *argv[])
 
     auto db = new QMLMongoDB();
     engine.rootContext()->setContextProperty("db",db);
-
     engine.rootContext()->setContextProperty("Utility",new Utility());
-
     engine.rootContext()->setContextProperty("Personel",new Personel(db->getDb()));
+    engine.rootContext()->setContextProperty("User",new User(db->getDb()));
 
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
