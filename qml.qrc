@@ -47,4 +47,7 @@
         <file>YeniEkle.qml</file>
         <file>GazeteEkle.qml</file>
     </qresource>
+    <qresource prefix="/User" lang="TR">
+        <file>UserMenu.qml</file>
+    </qresource>
 </RCC>
