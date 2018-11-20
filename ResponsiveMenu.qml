@@ -19,7 +19,8 @@ Item {
         height: 350
         x: 0
         y: -height
-        color: "#AA115544"
+//        color: "#CC000000"
+        color: "RoyalBlue"
 
         ScrollView{
             anchors.fill: parent
@@ -28,18 +29,24 @@ Item {
                 anchors.fill: parent
                 property int w: responsivemenurect.width
 
-//                Rectangle{
-//                    width: parent.w;
-//                    height: 50
-//                    color: "transparent"
-//                    Text{
-//                        anchors.centerIn: parent
-//                        text: "Meclis"
-//                        color: "white"
-//                        font.bold: true
-//                        font.pointSize: 10
-//                    }
-//                }
+                Rectangle{
+                    width: parent.w;
+                    height: 50
+                    color: "transparent"
+                    Text{
+                        anchors.centerIn: parent
+                        text: "Menü"
+                        color: "white"
+                        font.bold: true
+                        font.pointSize: 10
+                    }
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            print ("Standart Menü");
+                        }
+                    }
+                }
 
                 Rectangle{
                     width: parent.w;
@@ -52,7 +59,7 @@ Item {
                         font.bold: true
                         font.pointSize: 10
                     }
-                    radius: 5
+//                    radius: 5
                     MouseArea{
                         anchors.fill: parent
                         onClicked: {
@@ -100,7 +107,7 @@ Item {
                     height: 50
                     color: "#aa4682b4"
                     id: girisBtn
-                    visible: !Personel.logined
+                    visible: !Personel.logined & !User.logined
                     Text{
                         anchors.centerIn: parent
                         text: "Giriş"
@@ -108,7 +115,7 @@ Item {
                         font.bold: true
                         font.pointSize: 10
                     }
-                    radius: 5
+//                    radius: 5
 
                     MouseArea{
                         anchors.fill: parent
@@ -149,7 +156,7 @@ Item {
                         font.bold: true
                         font.pointSize: 10
                     }
-                    radius: 5
+//                    radius: 5
                     MouseArea{
                         anchors.fill: parent
                         onClicked: {
@@ -157,6 +164,29 @@ Item {
 //                            closeup();
                             headerid.closeMenu();
                             loadPersonelMenu();
+                        }
+                    }
+                }
+
+                Rectangle{
+                    id: userMenu
+                    width: parent.w;
+                    height: 50
+                    color: "DarkSlateBlue"
+                    visible: User.logined;
+                    Text{
+                        anchors.centerIn: parent
+                        text: "Kullanıcı Menü"
+                        color: "white"
+                        font.bold: true
+                        font.pointSize: 10
+                    }
+//                    radius: 5
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            headerid.closeMenu();
+                            loadKullaniciMenu();
                         }
                     }
                 }
@@ -174,7 +204,14 @@ Item {
                         font.bold: true
                         font.pointSize: 10
                     }
-                    radius: 5
+//                    radius: 5
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            headerid.closeMenu();
+                            loadPersonelMenu();
+                        }
+                    }
                 }
 
 
@@ -192,13 +229,35 @@ Item {
                         font.bold: true
                         font.pointSize: 10
                     }
-                    radius: 5
+//                    radius: 5
                     MouseArea{
                         anchors.fill: parent
                         onClicked: {
                             Personel.logout();
                             headerid.closeMenu();
-//                            closeup();
+                        }
+                    }
+                }
+
+                Rectangle{
+                    id: usercikis
+                    width: parent.w;
+                    height: 50
+                    color: "crimson"
+                    visible: User.logined
+                    Text{
+                        anchors.centerIn: parent
+                        text: "Çıkış"
+                        color: "white"
+                        font.bold: true
+                        font.pointSize: 10
+                    }
+                    radius: 5
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            User.logout();
+                            headerid.closeMenu();
                         }
                     }
                 }
@@ -284,6 +343,24 @@ Item {
         }
 
 
+    }
+
+
+    function loadKullaniciMenu(){
+
+        var com = Qt.createComponent("qrc:/User/UserMenu.qml");
+
+        if( com.status === Component.Ready )
+        {
+            var e = com.createObject(root);
+
+            if( e === null )
+            {
+                Utility.information = "Bir Hata Oluştu. Kullanıcı Menü Oluşturulamıyor";
+            }
+        }else{
+            Utility.information = "Bir Hata Oluştu. Kullanıcı Menü Oluşturulamıyor";
+        }
     }
 
 }
