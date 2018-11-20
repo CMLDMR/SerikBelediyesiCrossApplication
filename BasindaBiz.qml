@@ -147,7 +147,17 @@ Item {
     function loadbaskilar(){
 
 
-        var list = db.find("basin",QBSON.newBSON() , QBSON.newBSON );
+        var sort = QBSON.newBSON();
+
+        sort.addInt("_id",-1);
+
+        var option = QBSON.newBSON();
+
+        option.addBson("sort",sort);
+
+
+
+        var list = db.find("basin",QBSON.newBSON() , option );
 
 
         repeater.model = list;
