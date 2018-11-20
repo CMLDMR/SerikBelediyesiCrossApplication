@@ -162,16 +162,16 @@ Item{
                                 }
 
 
-                                DropShadow {
-                                    anchors.fill: baskantext
-                                    horizontalOffset: 0
-                                    verticalOffset: -5
-                                    radius: 7.0
-                                    samples: 17
-                                    color: "white"
-                                    source: baskantext
-                                    z: 2
-                                }
+//                                DropShadow {
+//                                    anchors.fill: baskantext
+//                                    horizontalOffset: 0
+//                                    verticalOffset: -5
+//                                    radius: 7.0
+//                                    samples: 17
+//                                    color: "white"
+//                                    source: baskantext
+//                                    z: 2
+//                                }
 
                             }
 
@@ -950,18 +950,14 @@ Item{
                         }
 
                         onWidthChanged: {
-//                            print( "Flow Layout Width Changed " + width );
                             resize();
                         }
                         onHeightChanged: {
-                            print( "Flow Layout Height Changed " + height );
                             resize();
                         }
 
                         Component.onCompleted: {
-                            print( "Call Resize"  +  flowLayoutRectid.height );
                             contentFlowid.resize();
-                            print( "Call Resized: " +  flowLayoutRectid.height);
 
                         }
 
@@ -973,6 +969,7 @@ Item{
                                 {
                                     if( width >= 900+360 )
                                     {
+
                                         obj1.width = width/2; obj1.height = mainSlider.height/3;
                                         obj2.width = width/4; obj2.height = mainSlider.height/3;
                                         obj3.width = width/4; obj3.height = mainSlider.height/3;
@@ -980,6 +977,7 @@ Item{
                                         obj5.width = width/6*3; obj5.height = mainSlider.height/3;
                                         obj6.width = width/6*2; obj6.height = mainSlider.height/3;
                                         flowLayoutRectid.height = mainSlider.height*3;
+
                                     }else{
 
                                         sliderSwipeViewParentid.anchors.leftMargin = 65;
