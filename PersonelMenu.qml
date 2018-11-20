@@ -14,7 +14,7 @@ Item {
     anchors.topMargin: 60
 
     onWidthChanged: {
-        print ("Personel Menu Width: " + width );
+//        print ("Personel Menu Width: " + width );
     }
 
     MouseArea{
@@ -31,7 +31,7 @@ Item {
 
             width: parent.width > 1024 ? 750 : parent.width
             height: parent.height
-            color: "orange"
+            color: "#CC2299CC"
             anchors.centerIn: parent
 
             Flow {
@@ -82,47 +82,47 @@ Item {
                     }
                 }
 
-                Rectangle {
-                    width: 150
-                    height: 50
-                    color: "black"
-                    Text {
-                        text: qsTr("Basında Biz")
-                        font.bold: true
-                        font.pointSize: 10
-                        font.family: "Tahoma"
-                        color: "white"
-                        anchors.centerIn: parent
-                    }
-                }
+//                Rectangle {
+//                    width: 150
+//                    height: 50
+//                    color: "black"
+//                    Text {
+//                        text: qsTr("Basında Biz")
+//                        font.bold: true
+//                        font.pointSize: 10
+//                        font.family: "Tahoma"
+//                        color: "white"
+//                        anchors.centerIn: parent
+//                    }
+//                }
 
-                Rectangle {
-                    width: 150
-                    height: 50
-                    color: "black"
-                    Text {
-                        text: qsTr("Basında Biz")
-                        font.bold: true
-                        font.pointSize: 10
-                        font.family: "Tahoma"
-                        color: "white"
-                        anchors.centerIn: parent
-                    }
-                }
+//                Rectangle {
+//                    width: 150
+//                    height: 50
+//                    color: "black"
+//                    Text {
+//                        text: qsTr("Basında Biz")
+//                        font.bold: true
+//                        font.pointSize: 10
+//                        font.family: "Tahoma"
+//                        color: "white"
+//                        anchors.centerIn: parent
+//                    }
+//                }
 
-                Rectangle {
-                    width: 150
-                    height: 50
-                    color: "black"
-                    Text {
-                        text: qsTr("Basında Biz")
-                        font.bold: true
-                        font.pointSize: 10
-                        font.family: "Tahoma"
-                        color: "white"
-                        anchors.centerIn: parent
-                    }
-                }
+//                Rectangle {
+//                    width: 150
+//                    height: 50
+//                    color: "black"
+//                    Text {
+//                        text: qsTr("Basında Biz")
+//                        font.bold: true
+//                        font.pointSize: 10
+//                        font.family: "Tahoma"
+//                        color: "white"
+//                        anchors.centerIn: parent
+//                    }
+//                }
             }
 
             Rectangle {
@@ -174,19 +174,26 @@ Item {
 
     function loadPersonelYonetimPaneli(){
 
-        var com = Qt.createComponent("qrc:/Personel/PersonelYonetim.qml");
-
-        if( com.status === Component.Ready )
+        if( Personel.checkYetki("Admin") )
         {
+            var com = Qt.createComponent("qrc:/Personel/PersonelYonetim.qml");
 
-            var e = com.createObject(item);
-
-            if( e === null )
+            if( com.status === Component.Ready )
             {
-                print ("Error: Load PersonelYonetim.qml");
-            }
 
+                var e = com.createObject(item);
+
+                if( e === null )
+                {
+                    print ("Error: Load PersonelYonetim.qml");
+                }
+
+            }
+        }else{
+            Utility.information = "Bu Alana Giriş Yetkiniz Bulunmamaktadır";
         }
+
+
 
 
     }

@@ -40,8 +40,9 @@
         <file>Giris.qml</file>
         <file>PersonelMenu.qml</file>
         <file>PersonelYonetim.qml</file>
+        <file>PersonDetail.qml</file>
     </qresource>
-    <qresource lang="TR" prefix="/Basin">
+    <qresource prefix="/Basin" lang="TR">
         <file>BasindaBiz.qml</file>
         <file>YeniEkle.qml</file>
         <file>GazeteEkle.qml</file>
