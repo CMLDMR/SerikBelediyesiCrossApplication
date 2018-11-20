@@ -38,6 +38,8 @@ bool Personel::login(const QString &tel, const QString &password)
 
         emit loginned();
 
+        mPersonelDocument.get()->clear();
+
         mPersonelDocument->append(var.getMaplist());
 
         return true;
