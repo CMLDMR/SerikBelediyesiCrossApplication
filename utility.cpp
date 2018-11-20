@@ -79,6 +79,17 @@ void Utility::setRootHeight(int rootHeight)
     emit rootHeightChanged();
 }
 
+QString Utility::information() const
+{
+    return mInformation;
+}
+
+void Utility::setInformation(const QString &information)
+{
+    mInformation = information;
+    emit informationChanged();
+}
+
 qint64 Utility::currentJulianDay() const
 {
     return QDate::currentDate().toJulianDay();

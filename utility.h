@@ -14,6 +14,7 @@ class Utility : public QObject
     Q_OBJECT
     Q_PROPERTY( int rootWidth READ rootWidth WRITE setRootWidth NOTIFY rootWidthChanged )
     Q_PROPERTY( int rootHeight READ rootHeight WRITE setRootHeight NOTIFY rootHeightChanged )
+    Q_PROPERTY( QString information READ information WRITE setInformation NOTIFY informationChanged)
 public:
     explicit Utility(QObject *parent = nullptr);
 
@@ -41,10 +42,15 @@ public:
 
     void setRootHeight(int rootHeight);
 
+    QString information() const;
+    void setInformation(const QString &information);
+
 signals:
     void rootWidthChanged();
 
     void rootHeightChanged();
+
+    void informationChanged();
 
 public slots:
 
@@ -54,6 +60,9 @@ private:
     int mRootWidth;
 
     int mRootHeight;
+
+
+    QString mInformation;
 
 
 };
