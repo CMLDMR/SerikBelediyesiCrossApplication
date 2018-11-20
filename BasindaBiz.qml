@@ -87,6 +87,7 @@ Item {
                 height: 50
                 color: "Black"
                 anchors.bottom: parent.bottom
+                anchors.bottomMargin: 50
                 Text {
                     text: qsTr("Yeni Ekle+")
                     font.bold: true
@@ -110,6 +111,27 @@ Item {
 
                             });
                         }
+                    }
+                }
+            }
+
+            Rectangle {
+                width: parent.width
+                height: 50
+                color: "Darkgray"
+                anchors.bottom: parent.bottom
+                Text {
+                    text: qsTr("Kapat X")
+                    font.bold: true
+                    font.pointSize: 10
+                    font.family: "Tahoma"
+                    color: "white"
+                    anchors.centerIn: parent
+                }
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        item.destroy();
                     }
                 }
             }
