@@ -15,7 +15,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
     utility.cpp \
-    cppsrc/personel.cpp
+    cppsrc/personel.cpp \
+    cppsrc/user.cpp
 
 RESOURCES += qml.qrc
 
@@ -86,7 +87,8 @@ DISTFILES += \
 HEADERS += \
     utility.h \
     ../url.h \
-    cppsrc/personel.h
+    cppsrc/personel.h \
+    cppsrc/user.h
 
 DISTFILES += \
     img/duyuru1.JPG \
