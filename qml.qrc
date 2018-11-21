@@ -49,5 +49,7 @@
     </qresource>
     <qresource prefix="/User" lang="TR">
         <file>UserMenu.qml</file>
+        <file>UserSikayet.qml</file>
+        <file>UserInformation.qml</file>
     </qresource>
 </RCC>
