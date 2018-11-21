@@ -54,8 +54,6 @@ Item {
                     Rectangle {
                         width: w
                         height: 150
-                        border.width: 2
-                        border.color: "red"
                         Text {
                             id: sikayetiniziGirinizid
                             text: qsTr("Şikayetinizi Giriniz!");
@@ -106,8 +104,6 @@ Item {
                                 horizontalAlignment: Text.AlignHCenter
                                 anchors.fill: parent
                                 onTextChanged: {
-
-                                    print( "TCNO Changed" );
 
                                     if( tcnoinputid.text.length == 11 )
                                     {
