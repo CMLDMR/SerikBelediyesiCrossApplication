@@ -43,7 +43,6 @@ Item {
                         ComboBox{
                             id: gazeteCombo
                             anchors.fill: parent
-                            model: ["Milliyet","EnSonHaber","Hürriyet","Sabah","Akşam","Posta"];
 
                             Component.onCompleted: {
                                 loadGazeteler();
@@ -236,7 +235,18 @@ Item {
 
 
     function loadGazeteler(){
-        var list = db.find( "basinGazete",QBSON.newBSON(),QBSON.newBSON());
+
+        var sortDoc = QBSON.newBSON();
+
+        sortDoc.addInt("gazeteAdi",-1);
+
+        var option = QBSON.newBSON();
+
+        option.addBson("sort",sortDoc);
+
+
+
+        var list = db.find( "basinGazete",QBSON.newBSON(),option);
         var arlist = new Array;
         for( var i = 0 ; i < list.length ; i++ )
         {
