@@ -46,3 +46,14 @@ void User::setLogined(bool logined)
     mLogined = logined;
     emit loginedChanged();
 }
+
+QString User::telefon() const
+{
+    return mTelefon;
+}
+
+void User::setTelefon(const QString &telefon)
+{
+    mTelefon = telefon;
+    emit telefonChanged();
+}

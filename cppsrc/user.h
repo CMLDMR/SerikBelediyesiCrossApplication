@@ -20,6 +20,7 @@ class User : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(bool logined READ logined WRITE setLogined NOTIFY loginedChanged)
+    Q_PROPERTY(QString telefon READ telefon WRITE setTelefon NOTIFY telefonChanged)
 public:
     explicit User(QMongoDB* _db , QObject *parent = nullptr);
 
@@ -41,8 +42,13 @@ public:
     bool logined() const;
     void setLogined(bool logined);
 
+    QString telefon() const;
+    void setTelefon(const QString &telefon);
+
 signals:
     void loginedChanged();
+    void telefonChanged();
+
 public slots:
 
 
@@ -62,6 +68,11 @@ private:
     /// \brief mLogined
     /// Kullanıcı Giriş Yapıldığına Dair Bilgi
     bool mLogined;
+
+    ///
+    /// \brief mTelefon
+    /// Kullanıcının Telefon Numarası
+    QString mTelefon;
 };
 
 #endif // USER_H
