@@ -42,12 +42,168 @@ Item{
 
             Rectangle {
                 anchors.fill: parent
-                color: "red"
+                color: "LightGray"
                 anchors.bottomMargin: 50
-                border.width: 5
-                border.color: "white"
+
+                ScrollView{
+                    id: scrollerid
+                    anchors.fill: parent
+                    anchors.topMargin: 20
+                    clip: true
+                    property int rWidth: width
+
+                    onWidthChanged: {
+                        if( width < 400 )
+                        {
+                            rWidth = width
+                        }
+                        if( width >= 400 && width < 600 )
+                        {
+                            rWidth = width/2
+                        }
+
+                        if( width >= 600 && width < 800 )
+                        {
+                            rWidth = width/3
+                        }
+                        if( width >= 800 && width < 1000 )
+                        {
+                            rWidth = width/4
+                        }
+
+                        if( width >= 1000 && width < 1200 )
+                        {
+                            rWidth = width/5
+                        }
+                    }
 
 
+                    Flow{
+                        width: parent.parent.width
+                        height: parent.contentHeight
+                        spacing: 0
+
+                        //Şikayetler Menü
+                        Rectangle {
+                            width: scrollerid.rWidth
+                            height: 100
+                            color: "transparent"
+                            Rectangle {
+                                width: parent.width-5
+                                height: parent.height-5
+                                color: "DarkGray"
+                                anchors.centerIn: parent
+                                Text {
+                                    text: qsTr("Şikayetlerim")
+                                    font.bold: true
+                                    font.pointSize: 10
+                                    font.family: "Tahoma"
+                                    color: "white"
+                                    anchors.centerIn: parent
+                                    width: parent.width
+                                    wrapMode: Text.WordWrap
+                                    horizontalAlignment: Text.AlignHCenter
+                                }
+                            }
+                        }
+
+                        //Bilgi Edinme Başvuruları
+                        Rectangle {
+                            width: scrollerid.rWidth
+                            height: 100
+                            color: "transparent"
+                            Rectangle {
+                                width: parent.width-5
+                                height: parent.height-5
+                                color: "DarkGray"
+                                anchors.centerIn: parent
+                                Text {
+                                    text: qsTr("Bilgi Edinme Başvurumlarım")
+                                    font.bold: true
+                                    font.pointSize: 10
+                                    font.family: "Tahoma"
+                                    color: "white"
+                                    anchors.centerIn: parent
+                                    width: parent.width
+                                    wrapMode: Text.WordWrap
+                                    horizontalAlignment: Text.AlignHCenter
+                                }
+                            }
+                        }
+
+                        //e-Belediye
+                        Rectangle {
+                            width: scrollerid.rWidth
+                            height: 100
+                            color: "transparent"
+                            Rectangle {
+                                width: parent.width-5
+                                height: parent.height-5
+                                color: "steelblue"
+                                anchors.centerIn: parent
+                                Text {
+                                    text: qsTr("e-Belediye")
+                                    font.bold: true
+                                    font.pointSize: 10
+                                    font.family: "Tahoma"
+                                    color: "white"
+                                    anchors.centerIn: parent
+                                    width: parent.width
+                                    wrapMode: Text.WordWrap
+                                    horizontalAlignment: Text.AlignHCenter
+                                }
+                            }
+                        }
+
+                        //Çek Gönder
+                        Rectangle {
+                            width: scrollerid.rWidth
+                            height: 100
+                            color: "transparent"
+                            Rectangle {
+                                width: parent.width-5
+                                height: parent.height-5
+                                color: "RoyalBlue"
+                                anchors.centerIn: parent
+                                Text {
+                                    text: qsTr("Çek Gönder")
+                                    font.bold: true
+                                    font.pointSize: 10
+                                    font.family: "Tahoma"
+                                    color: "white"
+                                    anchors.centerIn: parent
+                                    width: parent.width
+                                    wrapMode: Text.WordWrap
+                                    horizontalAlignment: Text.AlignHCenter
+                                }
+                            }
+                        }
+
+                        //Bilgi Danışma
+                        Rectangle {
+                            width: scrollerid.rWidth
+                            height: 100
+                            color: "transparent"
+                            Rectangle {
+                                width: parent.width-5
+                                height: parent.height-5
+                                color: "DarkGray"
+                                anchors.centerIn: parent
+                                Text {
+                                    text: qsTr("Bilgi Danışma")
+                                    font.bold: true
+                                    font.pointSize: 10
+                                    font.family: "Tahoma"
+                                    color: "white"
+                                    anchors.centerIn: parent
+                                    width: parent.width
+                                    wrapMode: Text.WordWrap
+                                    horizontalAlignment: Text.AlignHCenter
+                                }
+                            }
+                        }
+                    }
+                }
             }
 
 
