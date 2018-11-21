@@ -242,6 +242,21 @@ Item{
                                     wrapMode: Text.WordWrap
                                     horizontalAlignment: Text.AlignHCenter
                                 }
+                                MouseArea{
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        var component = Qt.createComponent("qrc:/Main/CekGonder.qml");
+                                        if( component.status === Component.Ready )
+                                        {
+                                            var sprite = component.createObject( item );
+                                            if ( sprite === null ) {
+                                                Utility.information = "Çek Gönder Uygulaması Açılamadı";
+                                            }
+                                        }else{
+                                            Utility.information = "Çek Gönder Uygulaması Açılamadı";
+                                        }
+                                    }
+                                }
                             }
                         }
 
