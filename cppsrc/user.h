@@ -21,8 +21,15 @@ class User : public QObject
     Q_OBJECT
     Q_PROPERTY(bool logined READ logined WRITE setLogined NOTIFY loginedChanged)
     Q_PROPERTY(QString telefon READ telefon WRITE setTelefon NOTIFY telefonChanged)
+    Q_PROPERTY(QString nameSurname READ nameSurname WRITE setNameSurname NOTIFY nameSurnameChanged)
+    Q_PROPERTY(QString mahalle READ mahalle NOTIFY mahalleChanged)
+    Q_PROPERTY(QString tcno READ tcno NOTIFY tcnoChanged)
+
 public:
     explicit User(QMongoDB* _db , QObject *parent = nullptr);
+
+
+    ~User();
 
 
     ///
@@ -45,9 +52,29 @@ public:
     QString telefon() const;
     void setTelefon(const QString &telefon);
 
+    QString nameSurname() const;
+    void setNameSurname(const QString &nameSurname);
+
+
+    ///
+    /// \brief mahalle
+    /// \return
+    /// Kullanıcın İkamet Ettiği Mahalle
+    QString mahalle() const;
+
+
+    ///
+    /// \brief tcno
+    /// \return
+    /// Kullanıcının TCNOsu
+    QString tcno() const;
+
 signals:
     void loginedChanged();
     void telefonChanged();
+    void nameSurnameChanged();
+    void mahalleChanged();
+    void tcnoChanged();
 
 public slots:
 
@@ -73,6 +100,11 @@ private:
     /// \brief mTelefon
     /// Kullanıcının Telefon Numarası
     QString mTelefon;
+
+    ///
+    /// \brief mNameSurname
+    /// Kullanıcın Adı Soyadı
+    QString mNameSurname;
 };
 
 #endif // USER_H
