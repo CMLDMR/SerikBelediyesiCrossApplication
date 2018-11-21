@@ -143,21 +143,15 @@ Item {
                                                 anchors.centerIn: parent
                                             }
                                         }
-
                                     }
-
-
-
-
                                 }
-
                             }
 
                             Component.onCompleted: {
 
                                 var filter = QBSON.newBSON();
 
-                                filter.addString("Şikayet/Talep Sahibi",User.telefon)
+                                filter.addString("Şikayet/Talep Sahibi",User.tcno)
 
                                 model =db.find("Sikayet",filter,QBSON.newBSON());
                             }
