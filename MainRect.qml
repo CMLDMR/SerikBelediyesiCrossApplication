@@ -735,158 +735,159 @@ Item{
                         }
 
 
-                        Rectangle{
-                            id: projectContectid
-                            color: "transparent"
-                            width: parent.width
-//                            height: 200
-                            property int responsiveDivider: 2
-                            property int itemHeight: 80
-                            property int itemCount: 0
-                            property int limit: 12
+                        //PROJELER
+//                        Rectangle{
+//                            id: projectContectid
+//                            color: "transparent"
+//                            width: parent.width
+////                            height: 200
+//                            property int responsiveDivider: 2
+//                            property int itemHeight: 80
+//                            property int itemCount: 0
+//                            property int limit: 12
 
-                            Rectangle{
-                                width: parent.width
-                                height: 30
-                                color: "black"
-                                anchors.top: parent.top
-                                anchors.topMargin: 5
-                                Text {
-                                    color: "white"
-                                    text: qsTr("Projeler");
-                                    anchors.centerIn: parent
-                                    font.bold: true
-                                    font.pointSize: 13
-                                    font.family: "Tahoma"
-                                }
-                                MouseArea{
-                                    anchors.fill: parent
-                                    onClicked: {
-                                        projectContectid.limit = 12;
-                                        projectContectid.loadProject();
-                                        contentFlowid.resize();
-                                    }
-                                }
-                            }
+//                            Rectangle{
+//                                width: parent.width
+//                                height: 30
+//                                color: "black"
+//                                anchors.top: parent.top
+//                                anchors.topMargin: 5
+//                                Text {
+//                                    color: "white"
+//                                    text: qsTr("Projeler");
+//                                    anchors.centerIn: parent
+//                                    font.bold: true
+//                                    font.pointSize: 13
+//                                    font.family: "Tahoma"
+//                                }
+//                                MouseArea{
+//                                    anchors.fill: parent
+//                                    onClicked: {
+//                                        projectContectid.limit = 12;
+//                                        projectContectid.loadProject();
+//                                        contentFlowid.resize();
+//                                    }
+//                                }
+//                            }
 
-                            Rectangle{
-                                width: parent.width
-                                height: 40
-                                color: "steelblue"
-                                anchors.bottom: parent.bottom
-                                Text{
-                                    color: "#ffffff"
-                                    text: "Daha Fazla Proje Göster"
-                                    anchors.centerIn: parent
-                                    font.bold: true
-                                    font.pointSize: 11
-                                }
-                                MouseArea{
-                                    anchors.fill: parent
-                                    onClicked: {
-                                        projectContectid.limit += 12;
-                                        projectContectid.loadProject();
-                                        contentFlowid.resize();
-                                    }
-                                }
-                            }
+//                            Rectangle{
+//                                width: parent.width
+//                                height: 40
+//                                color: "steelblue"
+//                                anchors.bottom: parent.bottom
+//                                Text{
+//                                    color: "#ffffff"
+//                                    text: "Daha Fazla Proje Göster"
+//                                    anchors.centerIn: parent
+//                                    font.bold: true
+//                                    font.pointSize: 11
+//                                }
+//                                MouseArea{
+//                                    anchors.fill: parent
+//                                    onClicked: {
+//                                        projectContectid.limit += 12;
+//                                        projectContectid.loadProject();
+//                                        contentFlowid.resize();
+//                                    }
+//                                }
+//                            }
 
-                            Rectangle{
-                                width: parent.width
-                                anchors.bottom: parent.bottom
-                                anchors.bottomMargin: 50
-                                anchors.top: parent.top
-                                anchors.topMargin: 40
-                                color: "transparent"
+//                            Rectangle{
+//                                width: parent.width
+//                                anchors.bottom: parent.bottom
+//                                anchors.bottomMargin: 50
+//                                anchors.top: parent.top
+//                                anchors.topMargin: 40
+//                                color: "transparent"
 
-                                Flow{
-                                    anchors.fill: parent
+//                                Flow{
+//                                    anchors.fill: parent
 
-                                    Repeater{
-                                        id: projectContentRepeaterid
+//                                    Repeater{
+//                                        id: projectContentRepeaterid
 
-                                        Rectangle{
-                                            width: projectContectid.width/projectContectid.responsiveDivider
-                                            height: projectContectid.itemHeight
-                                            color: "transparent"
-                                            Image {
-                                                id: projecticonid
-                                                source: db.fileurl(modelData.getElement("icon").Oid)
-                                                anchors.fill: parent
-                                            }
-                                            Rectangle{
-                                                anchors.fill: parent
-                                                anchors.margins: 5
-                                                color: "#b31a4a6f"
-                                                border.color: "white"
-                                                border.width: 1
-                                                Text {
-                                                    id: projectContentTitleid
-                                                    color: "#ffffff"
-                                                    text: modelData.getElement("Başlık").String
-                                                    font.family: "Tahoma"
-                                                    font.bold: true
-                                                    font.pointSize: 11
-                                                    verticalAlignment: Text.AlignVCenter
-                                                    horizontalAlignment: Text.AlignHCenter
-                                                    anchors.centerIn: parent
-                                                    width: parent.width
-                                                    wrapMode: Text.WordWrap
-                                                }
-                                                DropShadow {
-                                                    anchors.fill: projectContentTitleid
-                                                    horizontalOffset: 0
-                                                    verticalOffset: 3
-                                                    radius: 8.0
-                                                    samples: 17
-                                                    color: "#80000000"
-                                                    source: projectContentTitleid
-                                                    z: 2
-                                                }
-                                            }
-                                            MouseArea{
-                                                anchors.fill: parent
-                                                onClicked: {
-                                                    var component = Qt.createComponent("qrc:/Main/ProjeDetailPage.qml");
-                                                    if( component.status === Component.Ready )
-                                                    {
-                                                        var oid = modelData.getElement("_id").Oid;
-                                                        var sprite = component.createObject( mainslidetitemid , {"oid":oid});
-                                                        if (sprite === null) {
-                                                            // Error Handling
-                                                            console.log("Error creating object");
-                                                        }else{
-                                                            console.log("Success init");
-                                                        }
-                                                    }else{
-                                                        print( "HaberDetailPage.qml Component Not Ready");
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                                Component.onCompleted: {
-                                    projectContectid.loadProject();
-                                }
-                            }
+//                                        Rectangle{
+//                                            width: projectContectid.width/projectContectid.responsiveDivider
+//                                            height: projectContectid.itemHeight
+//                                            color: "transparent"
+//                                            Image {
+//                                                id: projecticonid
+//                                                source: db.fileurl(modelData.getElement("icon").Oid)
+//                                                anchors.fill: parent
+//                                            }
+//                                            Rectangle{
+//                                                anchors.fill: parent
+//                                                anchors.margins: 5
+//                                                color: "#b31a4a6f"
+//                                                border.color: "white"
+//                                                border.width: 1
+//                                                Text {
+//                                                    id: projectContentTitleid
+//                                                    color: "#ffffff"
+//                                                    text: modelData.getElement("Başlık").String
+//                                                    font.family: "Tahoma"
+//                                                    font.bold: true
+//                                                    font.pointSize: 11
+//                                                    verticalAlignment: Text.AlignVCenter
+//                                                    horizontalAlignment: Text.AlignHCenter
+//                                                    anchors.centerIn: parent
+//                                                    width: parent.width
+//                                                    wrapMode: Text.WordWrap
+//                                                }
+//                                                DropShadow {
+//                                                    anchors.fill: projectContentTitleid
+//                                                    horizontalOffset: 0
+//                                                    verticalOffset: 3
+//                                                    radius: 8.0
+//                                                    samples: 17
+//                                                    color: "#80000000"
+//                                                    source: projectContentTitleid
+//                                                    z: 2
+//                                                }
+//                                            }
+//                                            MouseArea{
+//                                                anchors.fill: parent
+//                                                onClicked: {
+//                                                    var component = Qt.createComponent("qrc:/Main/ProjeDetailPage.qml");
+//                                                    if( component.status === Component.Ready )
+//                                                    {
+//                                                        var oid = modelData.getElement("_id").Oid;
+//                                                        var sprite = component.createObject( mainslidetitemid , {"oid":oid});
+//                                                        if (sprite === null) {
+//                                                            // Error Handling
+//                                                            console.log("Error creating object");
+//                                                        }else{
+//                                                            console.log("Success init");
+//                                                        }
+//                                                    }else{
+//                                                        print( "HaberDetailPage.qml Component Not Ready");
+//                                                    }
+//                                                }
+//                                            }
+//                                        }
+//                                    }
+//                                }
+//                                Component.onCompleted: {
+//                                    projectContectid.loadProject();
+//                                }
+//                            }
 
-                            function loadProject(){
-                                var filter = QBSON.newBSON();
+//                            function loadProject(){
+//                                var filter = QBSON.newBSON();
 
-                                var option = QBSON.newBSON();
+//                                var option = QBSON.newBSON();
 
-                                var projection = QBSON.newBSON();
-                                projection.addBool("Başlık",true);
-                                projection.addBool("icon",true);
-                                option.addBson("projection",projection);
+//                                var projection = QBSON.newBSON();
+//                                projection.addBool("Başlık",true);
+//                                projection.addBool("icon",true);
+//                                option.addBson("projection",projection);
 
-                                option.addInt("limit",projectContectid.limit);
-                                projectContentRepeaterid.model = db.find("Projeler",filter,option);
-                                projectContectid.itemCount = projectContentRepeaterid.model.length;
-                            }
+//                                option.addInt("limit",projectContectid.limit);
+//                                projectContentRepeaterid.model = db.find("Projeler",filter,option);
+//                                projectContectid.itemCount = projectContentRepeaterid.model.length;
+//                            }
 
-                        }
+//                        }
 
 
                         Rectangle{
@@ -975,7 +976,7 @@ Item{
                                         obj3.width = width/4; obj3.height = mainSlider.height/3;
                                         obj4.width = width/6; obj4.height = mainSlider.height/3;
                                         obj5.width = width/6*3; obj5.height = mainSlider.height/3;
-                                        obj6.width = width/6*2; obj6.height = mainSlider.height/3;
+//                                        obj6.width = width/6*2; obj6.height = mainSlider.height/3;
                                         flowLayoutRectid.height = mainSlider.height*3;
 
                                     }else{
@@ -993,11 +994,11 @@ Item{
                                         obj6.width = width/3; obj6.height = obj6.itemCount*70+50;
                                         obj7.width = width/3; obj7.height = obj7.itemCount*70+50;
 
-                                        projectContectid.width = width; projectContectid.height = 500;
-                                        projectContectid.responsiveDivider = 4;
-                                        projectContectid.height = projectContectid.itemCount/projectContectid.responsiveDivider*projectContectid.itemHeight+40+50;
+//                                        projectContectid.width = width; projectContectid.height = 500;
+//                                        projectContectid.responsiveDivider = 4;
+//                                        projectContectid.height = projectContectid.itemCount/projectContectid.responsiveDivider*projectContectid.itemHeight+40+50;
 
-                                        print( "project COntent Height: " + projectContectid.height);
+//                                        print( "project COntent Height: " + projectContectid.height);
 
                                         var _height = obj1.height;
 
@@ -1008,7 +1009,7 @@ Item{
                                         if( maxheightObj < obj7.height ) maxheightObj = obj7.height;
                                         _height += maxheightObj;
 
-                                        _height += projectContectid.height;
+//                                        _height += projectContectid.height;
 
                                         _height += footerinformationid.height;
 
@@ -1028,9 +1029,9 @@ Item{
                                     obj6.width = width/3; obj6.height = obj6.itemCount*70+50;
                                     obj7.width = width/3; obj7.height = obj7.itemCount*70+50;
 
-                                    projectContectid.width = width; projectContectid.height = 500;
-                                    projectContectid.responsiveDivider = 3;
-                                    projectContectid.height = projectContectid.itemCount/projectContectid.responsiveDivider*projectContectid.itemHeight+40+50;
+//                                    projectContectid.width = width; projectContectid.height = 500;
+//                                    projectContectid.responsiveDivider = 3;
+//                                    projectContectid.height = projectContectid.itemCount/projectContectid.responsiveDivider*projectContectid.itemHeight+40+50;
 
 
 
@@ -1043,7 +1044,7 @@ Item{
                                     if( maxheightObj < obj6.height ) maxheightObj = obj6.height;
                                     if( maxheightObj < obj7.height ) maxheightObj = obj7.height;
                                     _height += maxheightObj;
-                                    _height += projectContectid.height;
+//                                    _height += projectContectid.height;
 
                                     _height += footerinformationid.height;
 
@@ -1059,9 +1060,11 @@ Item{
                                 obj5.width = width; obj5.height = obj5.itemCount*70+50;;
                                 obj6.width = width; obj6.height = obj6.itemCount*70+50;
                                 obj7.width = width; obj7.height = obj7.itemCount*70+50;
-                                projectContectid.width = width; projectContectid.height = 500;
-                                projectContectid.responsiveDivider = 2;
-                                projectContectid.height = projectContectid.itemCount/projectContectid.responsiveDivider*projectContectid.itemHeight+40+50;
+
+                                //PROJRLER
+//                                projectContectid.width = width; projectContectid.height = 500;
+//                                projectContectid.responsiveDivider = 2;
+//                                projectContectid.height = projectContectid.itemCount/projectContectid.responsiveDivider*projectContectid.itemHeight+40+50;
 
                                 _height = obj1.height;
                                 _height += obj2.height;
@@ -1070,7 +1073,7 @@ Item{
                                 _height += obj5.height;
                                 _height += obj6.height;
                                 _height += obj7.height;
-                                _height += projectContectid.height;
+//                                _height += projectContectid.height;
                                 _height += footerinformationid.height;
 
                                 flowLayoutRectid.height = _height;
