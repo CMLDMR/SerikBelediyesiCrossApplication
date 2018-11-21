@@ -315,13 +315,10 @@ Item {
         {
             var sprite = component.createObject( mainRectid );
             if ( sprite === null ) {
-                // Error Handling
-                console.log("CekGonder Error creating object");
-            }else{
-                console.log(" CekGonder Success init");
+                Utility.information = "Çek Gönder Uygulaması Açılamadı";
             }
         }else{
-            print( "CekGonder.qml Component Not Ready");
+            Utility.information = "Çek Gönder Uygulaması Açılamadı";
         }
     }
 
