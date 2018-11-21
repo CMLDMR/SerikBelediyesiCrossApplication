@@ -463,7 +463,7 @@ Item{
 
                                 obj5.height = 70 * haberlistid.model.length + 50;
                                 obj5.itemCount = haberlistid.model.length;
-                                print( "haberlistid Count: " + haberlistid.model.length + " " + obj5.height);
+//                                print( "haberlistid Count: " + haberlistid.model.length + " " + obj5.height);
                                 contentFlowid.resize();
                             }
 
@@ -576,7 +576,7 @@ Item{
 
 
 
-                                print( "Date: " + Utility.currentDateDouble() );
+//                                print( "Date: " + Utility.currentDateDouble() );
 
 
                                 var option = QBSON.newBSON();
@@ -594,7 +594,7 @@ Item{
 
                                 obj6.height = 70 * duyurulistid.model.length + 50;
                                 obj6.itemCount = duyurulistid.model.length;
-                                print( "DuyuruList Count: " + duyurulistid.model.length + " " + obj6.height);
+//                                print( "DuyuruList Count: " + duyurulistid.model.length + " " + obj6.height);
                             }
                         }
 
@@ -730,7 +730,7 @@ Item{
 
                                 obj7.height = 70 * calismalistrepeaterid.model.length + 50;
                                 obj7.itemCount = calismalistrepeaterid.model.length;
-                                print( "Çalışmalar Count: " + calismalistrepeaterid.model.length + " " + obj7.height);
+//                                print( "Çalışmalar Count: " + calismalistrepeaterid.model.length + " " + obj7.height);
                             }
                         }
 
