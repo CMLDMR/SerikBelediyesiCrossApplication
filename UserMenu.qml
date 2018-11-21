@@ -53,27 +53,31 @@ Item{
                     property int rWidth: width
 
                     onWidthChanged: {
-                        if( width < 400 )
+                        if( width < 200 )
                         {
                             rWidth = width
                         }
-                        if( width >= 400 && width < 600 )
+                        if( width >= 200 && width < 400 )
                         {
                             rWidth = width/2
+                        }
+                        if( width >= 400 && width < 600 )
+                        {
+                            rWidth = width/3
                         }
 
                         if( width >= 600 && width < 800 )
                         {
-                            rWidth = width/3
+                            rWidth = width/4
                         }
                         if( width >= 800 && width < 1000 )
                         {
-                            rWidth = width/4
+                            rWidth = width/5
                         }
 
                         if( width >= 1000 && width < 1200 )
                         {
-                            rWidth = width/5
+                            rWidth = width/6
                         }
                     }
 
@@ -82,6 +86,50 @@ Item{
                         width: parent.parent.width
                         height: parent.contentHeight
                         spacing: 0
+
+
+                        //Bilgilerim
+                        Rectangle {
+                            width: scrollerid.rWidth
+                            height: 100
+                            color: "transparent"
+                            Rectangle {
+                                width: parent.width-5
+                                height: parent.height-5
+                                color: "DarkSeaGreen"
+                                anchors.centerIn: parent
+                                Text {
+                                    text: qsTr("Bilgilerim")
+                                    font.bold: true
+                                    font.pointSize: 10
+                                    font.family: "Tahoma"
+                                    color: "white"
+                                    anchors.centerIn: parent
+                                    width: parent.width
+                                    wrapMode: Text.WordWrap
+                                    horizontalAlignment: Text.AlignHCenter
+                                }
+                                MouseArea{
+                                    anchors.fill: parent
+                                    onClicked: {
+
+                                        var com = Qt.createComponent("qrc:/User/UserInformation.qml");
+
+                                        if( com.status === Component.Ready )
+                                        {
+                                            var e = com.createObject(item);
+                                            if( e === null )
+                                            {
+                                                Utility.information = "Hata: Kullanıcı Bilgileri Ekranı Yüklenemedi";
+                                            }
+                                        }else{
+                                            Utility.information = "Hata: Kullanıcı Bilgileri Ekranı Yüklenemedi";
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
 
                         //Şikayetler Menü
                         Rectangle {
@@ -103,6 +151,24 @@ Item{
                                     width: parent.width
                                     wrapMode: Text.WordWrap
                                     horizontalAlignment: Text.AlignHCenter
+                                }
+                                MouseArea{
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        var com = Qt.createComponent("qrc:/User/UserSikayet.qml");
+
+                                        if( com.status === Component.Ready )
+                                        {
+                                            var e = com.createObject(item);
+                                            if( e === null )
+                                            {
+                                                Utility.information = "Hata: null\nŞikayet Yönetim Paneli Açılamadı.\nLütfen Daha Sonra Tekrar Deneyiniz";
+                                            }
+
+                                        }else{
+                                            Utility.information = "Hata: "+com.errorString() + "\nŞikayet Yönetim Paneli Açılamadı.\nLütfen Daha Sonra Tekrar Deneyiniz";
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -202,6 +268,10 @@ Item{
                                 }
                             }
                         }
+
+
+
+
                     }
                 }
             }
