@@ -26,9 +26,10 @@
         <file>img/duyuru1.JPG</file>
         <file>img/3D Logo.png</file>
     </qresource>
-    <qresource prefix="/Haberler">
+    <qresource prefix="/Haberler" lang="TR">
         <file>HaberMainRect.qml</file>
         <file>HaberDetailPage.qml</file>
+        <file>Haberlist.qml</file>
     </qresource>
     <qresource prefix="/Baskan">
         <file>BaskanPage.qml</file>
@@ -59,5 +60,10 @@
     </qresource>
     <qresource prefix="/CommanMenu" lang="TR">
         <file>Menu.qml</file>
+    </qresource>
+    <qresource prefix="/ProjeCalisma" lang="TR">
+        <file>ProjeCalisma.qml</file>
+        <file>Projeler.qml</file>
+        <file>Calismalar.qml</file>
     </qresource>
 </RCC>

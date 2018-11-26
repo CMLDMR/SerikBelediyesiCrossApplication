@@ -49,7 +49,7 @@ Item {
 
                         Image {
                             id: slideDetailimg
-                            source: "file"
+//                            source: "file"
                             anchors.fill: parent
                             fillMode: Image.PreserveAspectCrop
                             Rectangle{

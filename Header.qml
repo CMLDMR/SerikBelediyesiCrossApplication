@@ -235,6 +235,27 @@ Item {
                             width: parent.width
                             wrapMode: Text.WordWrap
                         }
+                        MouseArea{
+                            anchors.fill: parent
+                            onClicked: {
+                                var com = Qt.createComponent("qrc:/ProjeCalisma/ProjeCalisma.qml");
+
+                                if( com.status === Component.Ready )
+                                {
+
+                                    var e = com.createObject(mainRectid);
+
+                                    if( e === null )
+                                    {
+                                        Utility.information = "Proje&Çalışma Paneli Oluşturulamadı";
+                                    }else{
+
+                                    }
+                                }else{
+                                    Utility.information = com.errorString + "\nProje&Çalışma Paneli Oluşturulamadı";
+                                }
+                            }
+                        }
                     }
 
                     Rectangle{
@@ -253,6 +274,27 @@ Item {
                             anchors.centerIn: parent
                             width: parent.width
                             wrapMode: Text.WordWrap
+                        }
+                        MouseArea{
+                            anchors.fill: parent
+                            onClicked: {
+                                var com = Qt.createComponent("qrc:/Haberler/Haberlist.qml");
+
+                                if( com.status === Component.Ready )
+                                {
+
+                                    var e = com.createObject(mainRectid);
+
+                                    if( e === null )
+                                    {
+                                        Utility.information = "Haberler Paneli Oluşturulamadı";
+                                    }else{
+
+                                    }
+                                }else{
+                                    Utility.information = com.errorString + "\nHaberler Paneli Oluşturulamadı";
+                                }
+                            }
                         }
                     }
 
