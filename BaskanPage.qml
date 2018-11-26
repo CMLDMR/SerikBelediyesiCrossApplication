@@ -61,11 +61,15 @@ Item {
                                 id: baskantext
                                 text: qsTr("Yükleniyor")
                                 textFormat: Text.RichText
+                                font.pointSize: 14
                                 wrapMode: Text.WordWrap
-                                width: baskanPageDetailitem.width
-                                color: "#ffffff"
+                                width: baskanPageDetailitem.width > 1024 ? 1024 : baskanPageDetailitem.width
+                                color: "#888888"
+                                horizontalAlignment: Text.AlignJustify
+                                anchors.centerIn: parent
                             }
-                            height: baskantext.height
+                            height: baskantext.height+20
+                            clip: true
                         }
 
 
@@ -114,23 +118,18 @@ Item {
 
                 filter.addOid("_id","5a8ec33fae94be25600051a6");
 
-
-                var option = QBSON.newBSON();
-
-                var baskan = db.find_one("Yonetim",filter,option)
+                var baskan = db.find_one("Yonetim",filter,QBSON.newBSON())
 
                 var filelist = baskan.getElement("fileList");
 
                 var array = filelist.Array;
 
-                print( "COunt Array: " + array.count );
                 for( var i = 0 ; i < array.count ; i++ )
                 {
                     var e = array.getElement(i);
-                    print( db.fileurl(e.Oid,true) );
                 }
 
-                var html = utility.RepairHTML( baskan.getElement("html").String , baskanpagerect.width );
+                var html = Utility.repairHTML( baskan.getElement("html").String , baskanpagerect.width );
 
 
                 baskantext.text = html;
