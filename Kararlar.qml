@@ -100,7 +100,7 @@ Item {
                             Rectangle {
                                 width: parent.width-5
                                 height: parent.height-5
-                                color: "orange"
+                                color: "steelblue"
                                 anchors.centerIn: parent
                                 property var oid: karar.getElement("kararlar").Array.getElement(index).Oid
                                 Text {
