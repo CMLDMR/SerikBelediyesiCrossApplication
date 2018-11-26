@@ -218,6 +218,12 @@ Item{
                                     wrapMode: Text.WordWrap
                                     horizontalAlignment: Text.AlignHCenter
                                 }
+                                MouseArea{
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        Qt.openUrlExternally("https://webportal.serik.bel.tr/web/guest/2");
+                                    }
+                                }
                             }
                         }
 
