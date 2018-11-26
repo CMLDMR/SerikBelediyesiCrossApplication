@@ -196,6 +196,26 @@ Item {
                             font.family: "Tahoma"
                             anchors.centerIn: parent
                         }
+                        MouseArea{
+                            anchors.fill: parent
+                            onClicked: {
+                                // Load Meclis Kararları
+
+                                var com = Qt.createComponent("qrc:/Meclis/MeclisKararlari.qml");
+
+                                if( com.status === Component.Ready )
+                                {
+                                    var e = com.createObject(mainRectid);
+                                    if( e === null )
+                                    {
+                                        Utility.information = "Meclis Paneli Oluşturulamadı";
+                                    }
+                                }else{
+                                    Utility.information = "Meclis Paneli Oluşturulamadı";
+                                }
+
+                            }
+                        }
                     }
 
                     Rectangle{
