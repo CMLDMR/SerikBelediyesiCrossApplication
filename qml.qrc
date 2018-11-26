@@ -42,14 +42,15 @@
         <file>PersonelYonetim.qml</file>
         <file>PersonDetail.qml</file>
     </qresource>
-    <qresource prefix="/Basin" lang="TR">
+    <qresource lang="TR" prefix="/Basin">
         <file>BasindaBiz.qml</file>
         <file>YeniEkle.qml</file>
         <file>GazeteEkle.qml</file>
     </qresource>
-    <qresource prefix="/User" lang="TR">
+    <qresource lang="TR" prefix="/User">
         <file>UserMenu.qml</file>
         <file>UserSikayet.qml</file>
         <file>UserInformation.qml</file>
+        <file>UserSikayetDetail.qml</file>
     </qresource>
 </RCC>

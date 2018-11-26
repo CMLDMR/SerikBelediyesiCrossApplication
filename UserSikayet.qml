@@ -43,7 +43,7 @@ Item {
                 id: contentRect
                 anchors.fill: parent
                 anchors.topMargin: 50
-                anchors.bottomMargin: 100
+                anchors.bottomMargin: 50
                 color: "transparent"
 
                 ScrollView{
@@ -56,7 +56,6 @@ Item {
                         {
                             rWidth = width
                         }
-
                         if( width >= 400 && width < 600 )
                         {
                             rWidth = width/2
@@ -93,13 +92,36 @@ Item {
                                     color: "Gray"
                                     anchors.centerIn: parent
 
+                                    MouseArea{
+                                        anchors.fill: parent
+                                        onClicked: {
+                                            print ("Oid: " + modelData.getElement("_id").Oid);
+
+                                            var com = Qt.createComponent("qrc:/User/UserSikayetDetail.qml");
+
+                                            if( com.status === Component.Ready )
+                                            {
+
+                                                var e = com.createObject(item,{"oid":modelData.getElement("_id").Oid});
+
+                                                if( e === null )
+                                                {
+                                                    Utility.information = "Şikayet Detay Paneli Oluşturulamadı";
+                                                }
+
+                                            }else{
+                                                Utility.information = "Şikayet Detay Paneli Oluşturulamadı";
+                                            }
+                                        }
+                                    }
+
                                     Column{
                                         anchors.fill: parent
                                         spacing: 1
 
                                         Rectangle {
                                             width: parent.width
-                                            height: 30
+                                            height: 20
                                             color: "transparent"
 
                                             Text {
@@ -132,12 +154,26 @@ Item {
                                         }
                                         Rectangle {
                                             width: parent.width
-                                            height: 30
+                                            height: 20
                                             color: "transparent"
                                             Text {
                                                 text: qsTr(modelData.getElement("Mahalle").String)
                                                 font.bold: true
                                                 font.pointSize: 10
+                                                font.family: "Tahoma"
+                                                color: "white"
+                                                anchors.centerIn: parent
+                                            }
+                                        }
+
+                                        Rectangle {
+                                            width: parent.width
+                                            height: 10
+                                            color: "transparent"
+                                            Text {
+                                                text: qsTr(modelData.getElement("Tarih").String)
+                                                font.bold: false
+                                                font.pointSize: 8
                                                 font.family: "Tahoma"
                                                 color: "white"
                                                 anchors.centerIn: parent
@@ -168,27 +204,27 @@ Item {
 
 
 
-            Rectangle {
-                width: parent.width
-                height: 50
-                color: "DarkSlateGray"
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 50
-                Text {
-                    text: qsTr("Yeni Talep/Şikayet Ekle+")
-                    font.bold: true
-                    font.pointSize: 10
-                    font.family: "Tahoma"
-                    color: "white"
-                    anchors.centerIn: parent
-                }
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked: {
-                        item.destroy();
-                    }
-                }
-            }
+//            Rectangle {
+//                width: parent.width
+//                height: 50
+//                color: "DarkSlateGray"
+//                anchors.bottom: parent.bottom
+//                anchors.bottomMargin: 50
+//                Text {
+//                    text: qsTr("Yeni Talep/Şikayet Ekle+")
+//                    font.bold: true
+//                    font.pointSize: 10
+//                    font.family: "Tahoma"
+//                    color: "white"
+//                    anchors.centerIn: parent
+//                }
+//                MouseArea{
+//                    anchors.fill: parent
+//                    onClicked: {
+//                        item.destroy();
+//                    }
+//                }
+//            }
 
             Rectangle {
                 width: parent.width
