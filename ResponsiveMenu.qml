@@ -9,19 +9,15 @@ Item {
 
     anchors.fill: parent
     id: responsiveitemid
-//    signal triggered();
-//    z: 1
 
     Rectangle
     {
         id: responsivemenurect
         width: parent.width/2 > 200 ? 200 : parent.width/2
-        height: 350
+        height: 200
         x: 0
         y: -height
-//        color: "#CC000000"
         color: "RoyalBlue"
-
         ScrollView{
             anchors.fill: parent
 
@@ -48,26 +44,25 @@ Item {
                     }
                 }
 
-                Rectangle{
-                    width: parent.w;
-                    height: 50
-                    color: "orange"
-                    Text{
-                        anchors.centerIn: parent
-                        text: "Serik"
-                        color: "white"
-                        font.bold: true
-                        font.pointSize: 10
-                    }
-//                    radius: 5
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            print ("Serik Button");
-                            headerid.closeMenu();
-                        }
-                    }
-                }
+//                Rectangle{
+//                    width: parent.w;
+//                    height: 50
+//                    color: "orange"
+//                    Text{
+//                        anchors.centerIn: parent
+//                        text: "Serik"
+//                        color: "white"
+//                        font.bold: true
+//                        font.pointSize: 10
+//                    }
+//                    MouseArea{
+//                        anchors.fill: parent
+//                        onClicked: {
+//                            print ("Serik Button");
+//                            headerid.closeMenu();
+//                        }
+//                    }
+//                }
 
                 Rectangle{
                     width: parent.w;
@@ -82,22 +77,11 @@ Item {
                         font.pointSize: 10
                         id: cekgondertextid
                     }
-
                     MouseArea{
                         anchors.fill: parent
                         onClicked: {
-//                            closeup();
                             headerid.closeMenu();
                             loadCekGonder();
-                        }
-
-                        onPressed: {
-                            cekgonderbuttonid.color = "white";
-                            cekgondertextid.color = "black";
-                        }
-                        onReleased: {
-                            cekgonderbuttonid.color = "transparent";
-                            cekgondertextid.color = "white";
                         }
                     }
                 }
@@ -115,8 +99,6 @@ Item {
                         font.bold: true
                         font.pointSize: 10
                     }
-//                    radius: 5
-
                     MouseArea{
                         anchors.fill: parent
                         onClicked: {
@@ -127,15 +109,12 @@ Item {
                                 var girisitem = component.createObject( mainRectid );
                                 if( girisitem === null )
                                 {
-                                    print( "Giris item Can Not Successfully" );
+                                    Utility.information = "Giriş Paneli Oluşturulamadı";
                                 }else{
-                                    print( "Giris Successfully" );
-//                                    responsiveitemid.triggered();
-//                                    closeup();
                                     headerid.closeMenu();
                                 }
                             }else{
-                                print( "Giris Component Can Not Ready" );
+                                Utility.information = "Giriş Paneli Oluşturalamadı";
                             }
                         }
                     }
@@ -156,12 +135,9 @@ Item {
                         font.bold: true
                         font.pointSize: 10
                     }
-//                    radius: 5
                     MouseArea{
                         anchors.fill: parent
                         onClicked: {
-//                            responsiveitemid.triggered();
-//                            closeup();
                             headerid.closeMenu();
                             loadPersonelMenu();
                         }
@@ -181,7 +157,6 @@ Item {
                         font.bold: true
                         font.pointSize: 10
                     }
-//                    radius: 5
                     MouseArea{
                         anchors.fill: parent
                         onClicked: {
@@ -204,7 +179,6 @@ Item {
                         font.bold: true
                         font.pointSize: 10
                     }
-//                    radius: 5
                     MouseArea{
                         anchors.fill: parent
                         onClicked: {
@@ -229,7 +203,6 @@ Item {
                         font.bold: true
                         font.pointSize: 10
                     }
-//                    radius: 5
                     MouseArea{
                         anchors.fill: parent
                         onClicked: {

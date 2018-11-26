@@ -30,17 +30,12 @@ bool Personel::login(const QString &tel, const QString &password)
     {
         mLogined = false;
         return false;
-
-
     }else{
-
-        mLogined = true;
-
-        emit loginned();
-
         mPersonelDocument.get()->clear();
 
         mPersonelDocument->append(var.getMaplist());
+
+        this->setLogined(true);
 
         return true;
     }
@@ -111,5 +106,6 @@ bool Personel::logined() const
 void Personel::setLogined(bool logined)
 {
     mLogined = logined;
+    emit loginned();
 }
 

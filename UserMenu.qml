@@ -174,28 +174,28 @@ Item{
                         }
 
                         //Bilgi Edinme Başvuruları
-                        Rectangle {
-                            width: scrollerid.rWidth
-                            height: 100
-                            color: "transparent"
-                            Rectangle {
-                                width: parent.width-5
-                                height: parent.height-5
-                                color: "DarkGray"
-                                anchors.centerIn: parent
-                                Text {
-                                    text: qsTr("Bilgi Edinme Başvurumlarım")
-                                    font.bold: true
-                                    font.pointSize: 10
-                                    font.family: "Tahoma"
-                                    color: "white"
-                                    anchors.centerIn: parent
-                                    width: parent.width
-                                    wrapMode: Text.WordWrap
-                                    horizontalAlignment: Text.AlignHCenter
-                                }
-                            }
-                        }
+//                        Rectangle {
+//                            width: scrollerid.rWidth
+//                            height: 100
+//                            color: "transparent"
+//                            Rectangle {
+//                                width: parent.width-5
+//                                height: parent.height-5
+//                                color: "DarkGray"
+//                                anchors.centerIn: parent
+//                                Text {
+//                                    text: qsTr("Bilgi Edinme Başvurumlarım")
+//                                    font.bold: true
+//                                    font.pointSize: 10
+//                                    font.family: "Tahoma"
+//                                    color: "white"
+//                                    anchors.centerIn: parent
+//                                    width: parent.width
+//                                    wrapMode: Text.WordWrap
+//                                    horizontalAlignment: Text.AlignHCenter
+//                                }
+//                            }
+//                        }
 
                         //e-Belediye
                         Rectangle {
@@ -267,28 +267,28 @@ Item{
                         }
 
                         //Bilgi Danışma
-                        Rectangle {
-                            width: scrollerid.rWidth
-                            height: 100
-                            color: "transparent"
-                            Rectangle {
-                                width: parent.width-5
-                                height: parent.height-5
-                                color: "DarkGray"
-                                anchors.centerIn: parent
-                                Text {
-                                    text: qsTr("Bilgi Danışma")
-                                    font.bold: true
-                                    font.pointSize: 10
-                                    font.family: "Tahoma"
-                                    color: "white"
-                                    anchors.centerIn: parent
-                                    width: parent.width
-                                    wrapMode: Text.WordWrap
-                                    horizontalAlignment: Text.AlignHCenter
-                                }
-                            }
-                        }
+//                        Rectangle {
+//                            width: scrollerid.rWidth
+//                            height: 100
+//                            color: "transparent"
+//                            Rectangle {
+//                                width: parent.width-5
+//                                height: parent.height-5
+//                                color: "DarkGray"
+//                                anchors.centerIn: parent
+//                                Text {
+//                                    text: qsTr("Bilgi Danışma")
+//                                    font.bold: true
+//                                    font.pointSize: 10
+//                                    font.family: "Tahoma"
+//                                    color: "white"
+//                                    anchors.centerIn: parent
+//                                    width: parent.width
+//                                    wrapMode: Text.WordWrap
+//                                    horizontalAlignment: Text.AlignHCenter
+//                                }
+//                            }
+//                        }
 
 
 

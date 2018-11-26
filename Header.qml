@@ -343,9 +343,9 @@ Item {
                         color: "transparent"
                         height: parent.height
                         width: 100
+                        visible: !(User.logined || Personel.logined)
                         Rectangle{
                             color: "DeepSkyBlue "
-//                            anchors.centerIn: parent
                             anchors.fill: parent
                             Text {
                                 id: girismenuitem
@@ -360,30 +360,31 @@ Item {
                                 width: parent.width
                                 wrapMode: Text.WordWrap
                             }
-//                            width: serikmenuitem.width
-//                            height: serikmenuitem.height
                             radius: 3
                             MouseArea{
                                 anchors.fill: parent
                                 onClicked: {
 
-                                    var component = Qt.createComponent("qrc:/Personel/Giris.qml");
+                                    print ( "User Logined: " + User.logined );
 
+                                    print ( "Personel Logined: " + Personel.logined );
+
+                                    print ("Visibility : " + !(User.logined || Personel.logined) );
+
+
+                                    var component = Qt.createComponent("qrc:/Personel/Giris.qml");
                                     if( component.status === Component.Ready )
                                     {
                                         var girisitem = component.createObject( mainRectid );
                                         if( girisitem === null )
                                         {
-                                            print( "Giris item Can Not Successfully" );
+                                            Utility.information = "Giriş Paneli Oluşturulamadı";
                                         }else{
-
                                             closeMenu();
-
                                         }
                                     }else{
-                                        print( "Giris Component Can Not Ready" );
+                                        Utility.information = "Giriş Paneli Oluşturulamadı";
                                     }
-
                                 }
                             }
                         }
