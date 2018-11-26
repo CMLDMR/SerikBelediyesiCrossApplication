@@ -53,4 +53,8 @@
         <file>UserInformation.qml</file>
         <file>UserSikayetDetail.qml</file>
     </qresource>
+    <qresource lang="TR" prefix="/Meclis">
+        <file>MeclisKararlari.qml</file>
+        <file>Kararlar.qml</file>
+    </qresource>
 </RCC>
