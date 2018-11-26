@@ -94,8 +94,10 @@ Item {
                             width: sliderPageContentRectid.width
                             wrapMode: Text.WordWrap
                             anchors.margins: 10
+                            Component.onCompleted: {
+                                parent.height = haberdetailid.height+20
+                            }
                         }
-                        height: haberdetailid.height+20
                         anchors.margins: 10
                     }
 
