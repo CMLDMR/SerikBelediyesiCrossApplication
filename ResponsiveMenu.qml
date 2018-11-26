@@ -39,7 +39,8 @@ Item {
                     MouseArea{
                         anchors.fill: parent
                         onClicked: {
-                            print ("Standart Menü");
+                            headerid.closeMenu();
+                            openMenu();
                         }
                     }
                 }
@@ -331,6 +332,25 @@ Item {
         }else{
             Utility.information = "Bir Hata Oluştu. Kullanıcı Menü Oluşturulamıyor";
         }
+    }
+
+
+    function openMenu(){
+
+        var com = Qt.createComponent("qrc:/CommanMenu/Menu.qml");
+
+        if( com.status === Component.Ready )
+        {
+            var e = com.createObject(mainRectid);
+
+            if( e === null )
+            {
+                Utility.information = "Menü Paneli Oluşturulamadı";
+            }
+        }else{
+            Utility.information = "Menü Paneli Oluşturulamadı";
+        }
+
     }
 
 }
