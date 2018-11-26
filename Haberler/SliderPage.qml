@@ -16,7 +16,7 @@ Item {
     Rectangle{
         width: parent.width
         height: parent.height
-        color: "#80161313"
+        color: "#AA000000"
 
         MouseArea{
             anchors.fill: parent
@@ -33,6 +33,7 @@ Item {
             ScrollView{
                 anchors.topMargin: 40
                 anchors.fill: parent
+                anchors.bottomMargin: 50
                 clip: true
 
 
@@ -48,9 +49,10 @@ Item {
 
                         Image {
                             id: slideDetailimg
-                            source: "file"
+//                            source: "file"
                             anchors.fill: parent
                             fillMode: Image.PreserveAspectCrop
+                            anchors.centerIn: parent
                             Rectangle{
 //                                color: "#994f4c4c"
                                 gradient: Gradient {
@@ -94,41 +96,45 @@ Item {
                             width: sliderPageContentRectid.width
                             wrapMode: Text.WordWrap
                             anchors.margins: 10
-                            Component.onCompleted: {
-                                parent.height = haberdetailid.height+20
-                            }
+//                            Component.onCompleted: {
+//                                parent.
+//                            }
                         }
+                        height : haberdetailid.height+20
                         anchors.margins: 10
                     }
 
-                    Rectangle{
-                        width: sliderPageContentRectid.width
-                        height: 50
-                        Text {
-                            text: qsTr("Geri Dön")
-                            font.bold: true
-                            font.pointSize: 12
-                            verticalAlignment: Text.AlignVCenter
-                            horizontalAlignment: Text.AlignHCenter
-                            textFormat: Text.RichText
-                            width: sliderPageContentRectid.width
-                            color: "#fdf8f8"
-                            wrapMode: Text.WordWrap
-                            anchors.margins: 10
-                            anchors.centerIn: parent
-                        }
-                        color: "#10658f"
-                        MouseArea{
-                            anchors.fill: parent
-                            onClicked: {
-                                print(sliderDetailPage.oid);
-                                haberdetailid.destroy();
-                                sliderPageContentRectCloseid.running = true
-                            }
-                        }
+
+
+
+                }
+            }
+
+            Rectangle{
+                width: sliderPageContentRectid.width
+                anchors.bottom: parent.bottom
+                height: 50
+                Text {
+                    text: qsTr("Geri Dön")
+                    font.bold: true
+                    font.pointSize: 12
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    textFormat: Text.RichText
+                    width: sliderPageContentRectid.width
+                    color: "#fdf8f8"
+                    wrapMode: Text.WordWrap
+                    anchors.margins: 10
+                    anchors.centerIn: parent
+                }
+                color: "#10658f"
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        print(sliderDetailPage.oid);
+                        haberdetailid.destroy();
+                        sliderPageContentRectCloseid.running = true
                     }
-
-
                 }
             }
 
