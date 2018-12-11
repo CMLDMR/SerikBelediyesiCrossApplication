@@ -38,10 +38,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 win32{
     message("* using settings for windows");
 
-unix|win32: LIBS += -L$$PWD/mingw32-windows-release-v0.7/lib/ -lQMongoDB
+unix|win32: LIBS += -L$$PWD/mingw64-7.30-windows-release-0.7/lib/ -lQMongoDB
 
-INCLUDEPATH += $$PWD/mingw32-windows-release-v0.7/include
-DEPENDPATH += $$PWD/mingw32-windows-release-v0.7/include
+INCLUDEPATH += $$PWD/mingw64-7.30-windows-release-0.7/include
+DEPENDPATH += $$PWD/mingw64-7.30-windows-release-0.7/include
 }
 
 
